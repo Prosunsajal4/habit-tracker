@@ -219,72 +219,39 @@ export default function Analytics() {
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl shadow-pink-500/10 p-8 border border-white/50">
-          <h2 className="text-2xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-            <span className="w-2 h-8 bg-gradient-to-b from-pink-600 to-rose-600 rounded-full"></span>
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-pink-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-pink-500/20">
+          <h2 className="text-lg font-extrabold text-slate-800 mb-4 flex items-center gap-2 dark:text-slate-100">
+            <span className="w-1.5 h-5 bg-gradient-to-b from-pink-600 to-rose-600 rounded-full"></span>
             Individual Habit Performance
           </h2>
-          <div className="space-y-5">
+          <div className="space-y-3">
             {habitStats.map((habit, index) => (
               <div
-                key={index}
-                className="flex items-center gap-4 p-4 bg-slate-50/50 rounded-2xl hover:bg-slate-100/50 transition-colors"
+                key={habit.id}
+                className="p-4 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-300 dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
               >
-                <div className="flex-1">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-bold text-slate-800">
-                      {habit.name}
-                    </span>
-                    <span className="text-sm font-semibold text-slate-600">
-                      {habit.completed} / {habit.total} days
-                    </span>
-                  </div>
-                  <div className="w-full bg-slate-200 rounded-full h-4 overflow-hidden">
-                    <div
-                      className="h-4 rounded-full transition-all duration-500 ease-out"
-                      style={{
-                        width: `${habit.rate}%`,
-                        backgroundColor: COLORS[index % COLORS.length],
-                      }}
-                    />
-                  </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                      Completion Rate
-                    </span>
-                    <span className="text-sm font-bold text-slate-700">
-                      {habit.rate.toFixed(1)}%
-                    </span>
-                  </div>
+                <div className="flex justify-between items-center mb-2">
+                  <p className="font-bold text-slate-800 dark:text-slate-200 text-sm">
+                    {habit.name}
+                  </p>
+                  <p className="text-xs font-semibold text-pink-600 dark:text-pink-400">
+                    {((habit.completed / habit.goalDays) * 100).toFixed(1)}%
+                  </p>
                 </div>
+                <div className="w-full bg-slate-200 rounded-full h-2 dark:bg-slate-600">
+                  <div
+                    className="bg-gradient-to-r from-pink-500 to-rose-500 h-2 rounded-full transition-all duration-500"
+                    style={{
+                      width: `${(habit.completed / habit.goalDays) * 100}%`,
+                    }}
+                  ></div>
+                </div>
+                <p className="text-xs text-slate-500 mt-2 dark:text-slate-400">
+                  {habit.completed} of {habit.goalDays} days completed
+                </p>
               </div>
             ))}
           </div>
-          {habitStats.length === 0 && (
-            <div className="text-center py-16">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-purple-100 rounded-full mb-4">
-                <svg
-                  className="w-10 h-10 text-purple-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
-              </div>
-              <p className="text-xl font-semibold text-slate-600 mb-2">
-                No habits to analyze
-              </p>
-              <p className="text-slate-500">
-                Add habits to see your analytics!
-              </p>
-            </div>
-          )}
         </div>
       </main>
     </div>
