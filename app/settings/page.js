@@ -8,6 +8,7 @@ import {
   getCompletions,
   setCompletions,
 } from "@/lib/storage";
+import { toast } from "react-toastify";
 
 export default function Settings() {
   const [habits, setHabitsState] = useState([]);
@@ -54,13 +55,13 @@ export default function Settings() {
             setCompletions(data.completions);
             setHabitsState(data.habits);
             setCompletionsState(data.completions);
-            alert("Data imported successfully!");
+            toast.success("Data imported successfully!");
           }
         } else {
-          alert("Invalid backup file format.");
+          toast.error("Invalid backup file format.");
         }
       } catch (error) {
-        alert("Error parsing backup file.");
+        toast.error("Error parsing backup file.");
       }
     };
     reader.readAsText(file);
@@ -82,7 +83,7 @@ export default function Settings() {
         setCompletions({});
         setHabitsState([]);
         setCompletionsState({});
-        alert("All data has been cleared.");
+        toast.success("All data has been cleared.");
       }
     }
   };
