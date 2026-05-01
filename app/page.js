@@ -19,6 +19,7 @@ import {
   calculateCompletionRate,
   getMonthName,
 } from "@/lib/utils";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [habits, setHabitsState] = useState([]);
@@ -83,6 +84,7 @@ export default function Home() {
   const handleDeleteHabit = (habitId) => {
     if (confirm("Are you sure you want to delete this habit?")) {
       setHabitsState((prev) => prev.filter((h) => h.id !== habitId));
+      toast.success("Habit deleted successfully");
     }
   };
 
@@ -105,6 +107,7 @@ export default function Home() {
         }
       });
       setCompletionsState(newCompletions);
+      toast.success("All completions cleared for this month");
     }
   };
 
@@ -176,7 +179,7 @@ export default function Home() {
   const weekColors = ["#fef08a", "#fbcfe8", "#bfdbfe", "#bbf7d0", "#c7d2fe"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-violet-50/30 to-indigo-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-violet-50/30 to-indigo-50/30 dark:from-slate-900 dark:via-violet-900/30 dark:to-indigo-900/30 transition-colors duration-300">
       <header className="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-2xl shadow-violet-500/20 relative overflow-hidden">
         <div className="container mx-auto px-4 py-4 relative">
           <div className="flex flex-col md:flex-row justify-between items-center gap-3">
@@ -223,39 +226,39 @@ export default function Home() {
 
       <main className="container mx-auto px-4 py-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 relative overflow-hidden group hover:shadow-xl hover:shadow-violet-500/20 transition-all duration-300">
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20 relative overflow-hidden group hover:shadow-xl hover:shadow-violet-500/20 transition-all duration-300">
             <div className="absolute -right-6 -top-6 w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
             <div className="flex items-center justify-between relative">
               <div>
-                <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">
+                <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1 dark:text-slate-400">
                   Total Goal Completed
                 </p>
                 <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
                   {totalGoalCompleted}
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-3 rounded-xl shadow-md">
+              <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-3 rounded-xl shadow-md dark:from-green-900/30 dark:to-emerald-900/30">
                 <TrendingUp
-                  className="w-6 h-6 text-green-600"
+                  className="w-6 h-6 text-green-600 dark:text-green-400"
                   strokeWidth={2.5}
                 />
               </div>
             </div>
           </div>
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-rose-500/10 p-4 border border-white/50 relative overflow-hidden group hover:shadow-xl hover:shadow-rose-500/20 transition-all duration-300">
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-rose-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-rose-500/20 relative overflow-hidden group hover:shadow-xl hover:shadow-rose-500/20 transition-all duration-300">
             <div className="absolute -right-6 -top-6 w-24 h-24 bg-gradient-to-br from-rose-400 to-red-500 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
             <div className="flex items-center justify-between relative">
               <div>
-                <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1">
+                <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1 dark:text-slate-400">
                   Total Goal Incomplete
                 </p>
                 <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-red-600">
                   {totalGoalIncomplete}
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-rose-100 to-red-100 p-3 rounded-xl shadow-md">
+              <div className="bg-gradient-to-br from-rose-100 to-red-100 p-3 rounded-xl shadow-md dark:from-rose-900/30 dark:to-red-900/30">
                 <TrendingDown
-                  className="w-6 h-6 text-rose-600"
+                  className="w-6 h-6 text-rose-600 dark:text-rose-400"
                   strokeWidth={2.5}
                 />
               </div>
@@ -263,8 +266,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 mb-6 border border-white/50">
-          <h2 className="text-lg font-extrabold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 mb-6 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20">
+          <h2 className="text-lg font-extrabold text-slate-800 mb-4 flex items-center gap-2 dark:text-slate-100">
             <span className="w-1.5 h-5 bg-gradient-to-b from-violet-600 to-indigo-600 rounded-full"></span>
             Weekly Progress
           </h2>
@@ -281,10 +284,10 @@ export default function Home() {
                     size={60}
                   />
                 </div>
-                <p className="text-xs font-bold text-slate-700">
+                <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
                   Week {wp.week}
                 </p>
-                <p className="text-sm font-extrabold text-slate-900">
+                <p className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
                   {wp.percentage.toFixed(1)}%
                 </p>
               </div>
@@ -293,15 +296,15 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 hover:shadow-xl hover:shadow-violet-500/20 transition-all duration-300">
-            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20 hover:shadow-xl hover:shadow-violet-500/20 transition-all duration-300">
+            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2 dark:text-slate-100">
               <span className="w-1 h-4 bg-violet-600 rounded-full"></span>
               Habit Completed Per Day %
             </h3>
             <LineChartComponent data={dailyData} color="#7c3aed" height={150} />
           </div>
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-emerald-500/10 p-4 border border-white/50 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300">
-            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-emerald-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300">
+            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2 dark:text-slate-100">
               <span className="w-1 h-4 bg-emerald-600 rounded-full"></span>
               Habit Completed Per Week %
             </h3>
@@ -311,8 +314,8 @@ export default function Home() {
               height={150}
             />
           </div>
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-amber-500/10 p-4 border border-white/50 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300">
-            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-amber-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300">
+            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2 dark:text-slate-100">
               <span className="w-1 h-4 bg-amber-600 rounded-full"></span>
               Habit Completed Per Month %
             </h3>
@@ -324,9 +327,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
-            <h2 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">
+            <h2 className="text-lg font-extrabold text-slate-800 flex items-center gap-2 dark:text-slate-100">
               <span className="w-1.5 h-5 bg-gradient-to-b from-violet-600 to-indigo-600 rounded-full"></span>
               Habit Tracking - {getMonthName(selectedMonth.month)}{" "}
               {selectedMonth.year}
@@ -334,13 +337,16 @@ export default function Home() {
           </div>
           {habits.length === 0 ? (
             <div className="text-center py-10">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-violet-100 rounded-full mb-3">
-                <Plus className="w-7 h-7 text-violet-600" strokeWidth={2.5} />
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-violet-100 rounded-full mb-3 dark:bg-violet-900/30">
+                <Plus
+                  className="w-7 h-7 text-violet-600 dark:text-violet-400"
+                  strokeWidth={2.5}
+                />
               </div>
-              <p className="text-base font-semibold text-slate-600 mb-1">
+              <p className="text-base font-semibold text-slate-600 mb-1 dark:text-slate-400">
                 No habits yet
               </p>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-slate-500 dark:text-slate-500">
                 Add your first habit to start tracking your progress!
               </p>
             </div>

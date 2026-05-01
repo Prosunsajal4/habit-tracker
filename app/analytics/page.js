@@ -102,29 +102,33 @@ export default function Analytics() {
   }));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30">
-      <header className="bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 text-white shadow-2xl shadow-purple-500/20 relative overflow-hidden">
-        <div className="container mx-auto px-4 py-8 relative">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-900 dark:via-purple-900/30 dark:to-pink-900/30 transition-colors duration-300">
+      <header className="bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 text-white shadow-2xl shadow-purple-500/20 relative overflow-hidden dark:bg-gradient-to-r dark:from-purple-900 dark:via-fuchsia-900 dark:to-pink-900">
+        <div className="container mx-auto px-4 py-4 relative">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
             <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">
+              <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-pink-200 dark:bg-gradient-to-r dark:from-slate-200 dark:to-pink-200">
                 ANALYTICS
               </h1>
-              <p className="text-purple-100 mt-2 text-lg">
-                Detailed insights into your habit performance
+              <p className="text-pink-100 mt-1 text-sm dark:text-pink-200">
+                Track your habit performance and insights
               </p>
             </div>
-            <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md rounded-2xl px-5 py-3 border border-white/20">
-              <label className="text-sm font-semibold text-purple-100">
+            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-xl px-4 py-2 border border-white/20 hover:bg-white/20 transition-all duration-300 dark:bg-slate-800/15 dark:border-slate-700/20">
+              <label className="text-sm font-semibold text-purple-100 dark:text-purple-200">
                 Year:
               </label>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(Number(e.target.value))}
-                className="bg-transparent text-white outline-none cursor-pointer font-semibold text-lg"
+                className="bg-transparent text-white outline-none cursor-pointer font-semibold text-sm dark:text-slate-200"
               >
                 {[2024, 2025, 2026, 2027, 2028].map((year) => (
-                  <option key={year} value={year} className="text-gray-800">
+                  <option
+                    key={year}
+                    value={year}
+                    className="text-slate-800 dark:text-slate-200"
+                  >
                     {year}
                   </option>
                 ))}
@@ -134,45 +138,51 @@ export default function Analytics() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl shadow-purple-500/10 p-8 border border-white/50 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300">
-            <h2 className="text-2xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-              <span className="w-2 h-8 bg-gradient-to-b from-purple-600 to-fuchsia-600 rounded-full"></span>
-              Habit Completion by Month
+      <main className="container mx-auto px-4 py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-purple-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-purple-500/20">
+            <h2 className="text-lg font-extrabold text-slate-800 mb-4 flex items-center gap-2 dark:text-slate-100">
+              <span className="w-1.5 h-5 bg-gradient-to-b from-purple-600 to-pink-600 rounded-full"></span>
+              Habit Details
             </h2>
-            <ResponsiveContainer width="100%" height={320}>
-              <BarChart data={monthlyStats}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis
-                  dataKey="name"
-                  stroke="#64748b"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-                />
-                <YAxis
-                  stroke="#64748b"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-                />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#ffffff",
-                    border: "1px solid #e2e8f0",
-                    borderRadius: "12px",
-                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                  }}
-                />
-                <Bar dataKey="rate" fill="#9333ea" radius={[6, 6, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            {habitStats.length === 0 ? (
+              <div className="text-center py-10">
+                <p className="text-sm text-slate-500 dark:text-slate-400">
+                  No habit data available for {selectedYear}
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {habitStats.map((habit) => (
+                  <div
+                    key={habit.id}
+                    className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-colors dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
+                  >
+                    <div>
+                      <p className="font-bold text-slate-800 dark:text-slate-200 text-sm">
+                        {habit.name}
+                      </p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        Goal: {habit.goalDays} days/month
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-extrabold text-purple-600 dark:text-purple-400">
+                        {habit.completed}/{habit.goalDays}
+                      </p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        {((habit.completed / habit.goalDays) * 100).toFixed(1)}%
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl shadow-fuchsia-500/10 p-8 border border-white/50 hover:shadow-2xl hover:shadow-fuchsia-500/20 transition-all duration-300">
-            <h2 className="text-2xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-              <span className="w-2 h-8 bg-gradient-to-b from-fuchsia-600 to-pink-600 rounded-full"></span>
+          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-fuchsia-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-fuchsia-500/20 hover:shadow-xl hover:shadow-fuchsia-500/20 transition-all duration-300">
+            <h2 className="text-lg font-extrabold text-slate-800 mb-4 flex items-center gap-2 dark:text-slate-100">
+              <span className="w-1.5 h-5 bg-gradient-to-b from-fuchsia-600 to-pink-600 rounded-full"></span>
               Habit Distribution
             </h2>
             <ResponsiveContainer width="100%" height={320}>
