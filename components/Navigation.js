@@ -16,9 +16,9 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-700/60 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 sticky top-0 z-40">
+    <nav className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 shadow-sm sticky top-0 z-40">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center h-12">
           <div className="flex gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -28,16 +28,13 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-1.5 px-3 py-3 font-semibold transition-all duration-300 relative text-sm ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all duration-200 relative text-xs ${
                     isActive
-                      ? "text-violet-600 dark:text-violet-400"
-                      : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+                      ? "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800/50"
                   }`}
                 >
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full" />
-                  )}
-                  <Icon className="w-4 h-4" strokeWidth={2.5} />
+                  <Icon className="w-3.5 h-3.5" strokeWidth={2} />
                   {item.label}
                 </Link>
               );
@@ -45,7 +42,7 @@ export default function Navigation() {
           </div>
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors text-slate-600 dark:text-slate-300"
+            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 text-slate-600 dark:text-slate-400"
             title={
               theme === "light" ? "Switch to dark mode" : "Switch to light mode"
             }

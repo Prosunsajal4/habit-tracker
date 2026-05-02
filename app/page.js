@@ -42,12 +42,16 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (habits.length > 0) setHabits(habits);
+    setHabits(habits);
   }, [habits]);
 
   useEffect(() => {
     setCompletions(completions);
   }, [completions]);
+
+  useEffect(() => {
+    setSelectedMonth(selectedMonth.year, selectedMonth.month);
+  }, [selectedMonth]);
 
   const handleToggleCompletion = (habitId, day) => {
     const dateKey = `${selectedMonth.year}-${String(selectedMonth.month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
@@ -92,7 +96,6 @@ export default function Home() {
     const [year, month] = e.target.value.split("-").map(Number);
     const newMonth = { year, month: month - 1 };
     setSelectedMonthState(newMonth);
-    setSelectedMonth(year, month - 1);
   };
 
   const handleClearCompletions = () => {
@@ -179,34 +182,34 @@ export default function Home() {
   const weekColors = ["#fef08a", "#fbcfe8", "#bfdbfe", "#bbf7d0", "#c7d2fe"];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-violet-50/30 to-indigo-50/30 dark:from-slate-900 dark:via-violet-900/30 dark:to-indigo-900/30 transition-colors duration-300">
-      <header className="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-2xl shadow-violet-500/20 relative overflow-hidden">
-        <div className="container mx-auto px-4 py-4 relative">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+      <header className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row justify-between items-center gap-3">
             <div className="text-center md:text-left">
-              <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-violet-200">
+              <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                 SMART HABIT TRACKER
               </h1>
-              <p className="text-violet-100 mt-1 text-sm">
+              <p className="text-slate-500 dark:text-slate-400 mt-0.5 text-xs">
                 Transform your daily habits into lasting achievements
               </p>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-xl px-4 py-2 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                <Calendar className="w-4 h-4 text-violet-200" />
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-2 border border-slate-200 dark:border-slate-700">
+                <Calendar className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
                 <input
                   type="month"
                   value={`${selectedMonth.year}-${String(selectedMonth.month + 1).padStart(2, "0")}`}
                   onChange={handleMonthChange}
-                  className="bg-transparent text-white outline-none cursor-pointer font-semibold text-sm"
+                  className="bg-transparent text-slate-900 dark:text-white outline-none cursor-pointer font-medium text-xs"
                 />
               </div>
               <button
                 onClick={handleClearCompletions}
-                className="flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-xl font-bold hover:bg-white/30 transition-all duration-300 shadow-lg"
+                className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 rounded-xl font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-200 border border-slate-200 dark:border-slate-700 text-xs"
                 title="Clear all completions for this month"
               >
-                <Eraser className="w-4 h-4" />
+                <Eraser className="w-3.5 h-3.5" />
                 Clear
               </button>
               <button
@@ -214,9 +217,9 @@ export default function Home() {
                   setEditingHabit(null);
                   setShowModal(true);
                 }}
-                className="flex items-center gap-2 bg-white text-violet-600 px-4 py-2 rounded-xl font-bold hover:bg-violet-50 transition-all duration-300 shadow-lg shadow-white/20 hover:shadow-white/30 hover:scale-105"
+                className="flex items-center gap-1.5 bg-violet-600 text-white px-3 py-2 rounded-xl font-medium hover:bg-violet-700 transition-all duration-200 shadow-sm text-xs"
               >
-                <Plus className="w-4 h-4" />
+                <Plus className="w-3.5 h-3.5" />
                 Add Habit
               </button>
             </div>
@@ -225,69 +228,66 @@ export default function Home() {
       </header>
 
       <main className="container mx-auto px-4 py-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20 relative overflow-hidden group hover:shadow-xl hover:shadow-violet-500/20 transition-all duration-300">
-            <div className="absolute -right-6 -top-6 w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
-            <div className="flex items-center justify-between relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
+            <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1 dark:text-slate-400">
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1 dark:text-slate-400">
                   Total Goal Completed
                 </p>
-                <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
+                <p className="text-2xl font-bold text-slate-900 dark:text-white">
                   {totalGoalCompleted}
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-3 rounded-xl shadow-md dark:from-green-900/30 dark:to-emerald-900/30">
+              <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-lg">
                 <TrendingUp
-                  className="w-6 h-6 text-green-600 dark:text-green-400"
-                  strokeWidth={2.5}
+                  className="w-5 h-5 text-emerald-600 dark:text-emerald-400"
+                  strokeWidth={2}
                 />
               </div>
             </div>
           </div>
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-rose-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-rose-500/20 relative overflow-hidden group hover:shadow-xl hover:shadow-rose-500/20 transition-all duration-300">
-            <div className="absolute -right-6 -top-6 w-24 h-24 bg-gradient-to-br from-rose-400 to-red-500 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
-            <div className="flex items-center justify-between relative">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
+            <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1 dark:text-slate-400">
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1 dark:text-slate-400">
                   Total Goal Incomplete
                 </p>
-                <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-red-600">
+                <p className="text-2xl font-bold text-slate-900 dark:text-white">
                   {totalGoalIncomplete}
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-rose-100 to-red-100 p-3 rounded-xl shadow-md dark:from-rose-900/30 dark:to-red-900/30">
+              <div className="bg-rose-100 dark:bg-rose-900/30 p-2 rounded-lg">
                 <TrendingDown
-                  className="w-6 h-6 text-rose-600 dark:text-rose-400"
-                  strokeWidth={2.5}
+                  className="w-5 h-5 text-rose-600 dark:text-rose-400"
+                  strokeWidth={2}
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 mb-6 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20">
-          <h2 className="text-lg font-extrabold text-slate-800 mb-4 flex items-center gap-2 dark:text-slate-100">
-            <span className="w-1.5 h-5 bg-gradient-to-b from-violet-600 to-indigo-600 rounded-full"></span>
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 mb-4">
+          <h2 className="text-sm font-bold text-slate-900 mb-4 dark:text-white">
             Weekly Progress
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {weeklyProgress.map((wp, index) => (
-              <div key={wp.week} className="flex flex-col items-center group">
+              <div key={wp.week} className="flex flex-col items-center">
                 <div
                   style={{ backgroundColor: weekColors[index] }}
-                  className="p-3 rounded-2xl mb-2 shadow-md group-hover:scale-110 transition-transform duration-300"
+                  className="p-2 rounded-lg mb-1.5"
                 >
                   <DonutChart
                     percentage={wp.percentage}
                     color="#7c3aed"
-                    size={60}
+                    size={50}
                   />
                 </div>
-                <p className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                <p className="text-xs font-medium text-slate-600 dark:text-slate-400">
                   Week {wp.week}
                 </p>
-                <p className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                <p className="text-xs font-bold text-slate-900 dark:text-white">
                   {wp.percentage.toFixed(1)}%
                 </p>
               </div>
@@ -295,58 +295,54 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20 hover:shadow-xl hover:shadow-violet-500/20 transition-all duration-300">
-            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2 dark:text-slate-100">
-              <span className="w-1 h-4 bg-violet-600 rounded-full"></span>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
+            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white">
               Habit Completed Per Day %
             </h3>
-            <LineChartComponent data={dailyData} color="#7c3aed" height={150} />
+            <LineChartComponent data={dailyData} color="#7c3aed" height={120} />
           </div>
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-emerald-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300">
-            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2 dark:text-slate-100">
-              <span className="w-1 h-4 bg-emerald-600 rounded-full"></span>
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
+            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white">
               Habit Completed Per Week %
             </h3>
             <LineChartComponent
               data={weeklyChartData}
               color="#059669"
-              height={150}
+              height={120}
             />
           </div>
-          <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-amber-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-amber-500/20 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300">
-            <h3 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2 dark:text-slate-100">
-              <span className="w-1 h-4 bg-amber-600 rounded-full"></span>
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
+            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white">
               Habit Completed Per Month %
             </h3>
             <LineChartComponent
               data={monthlyChartData}
               color="#d97706"
-              height={150}
+              height={120}
             />
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg shadow-violet-500/10 p-4 border border-white/50 dark:bg-slate-800/80 dark:border-slate-700/50 dark:shadow-violet-500/20">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
-            <h2 className="text-lg font-extrabold text-slate-800 flex items-center gap-2 dark:text-slate-100">
-              <span className="w-1.5 h-5 bg-gradient-to-b from-violet-600 to-indigo-600 rounded-full"></span>
+            <h2 className="text-sm font-bold text-slate-900 dark:text-white">
               Habit Tracking - {getMonthName(selectedMonth.month)}{" "}
               {selectedMonth.year}
             </h2>
           </div>
           {habits.length === 0 ? (
-            <div className="text-center py-10">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-violet-100 rounded-full mb-3 dark:bg-violet-900/30">
+            <div className="text-center py-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-violet-100 dark:bg-violet-900/30 rounded-full mb-2">
                 <Plus
-                  className="w-7 h-7 text-violet-600 dark:text-violet-400"
-                  strokeWidth={2.5}
+                  className="w-6 h-6 text-violet-600 dark:text-violet-400"
+                  strokeWidth={2}
                 />
               </div>
-              <p className="text-base font-semibold text-slate-600 mb-1 dark:text-slate-400">
+              <p className="text-xs font-semibold text-slate-600 mb-1 dark:text-slate-400">
                 No habits yet
               </p>
-              <p className="text-sm text-slate-500 dark:text-slate-500">
+              <p className="text-xs text-slate-500 dark:text-slate-500">
                 Add your first habit to start tracking your progress!
               </p>
             </div>
