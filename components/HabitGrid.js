@@ -49,14 +49,14 @@ export default function HabitGrid({
   };
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-md dark:border-slate-700 dark:shadow-slate-900/50">
+    <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm dark:border-slate-700 dark:shadow-slate-900/50">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700">
+          <tr className="bg-slate-50 dark:bg-slate-800">
             <th className="border border-slate-200 px-2 py-2 text-left font-bold text-slate-700 w-8 text-xs dark:border-slate-600 dark:text-slate-300">
               #
             </th>
-            <th className="border border-slate-200 px-2 py-2 text-left font-bold text-slate-700 w-48 text-xs dark:border-slate-600 dark:text-slate-300">
+            <th className="border border-slate-200 px-2 py-2 text-left font-bold text-slate-700 w-40 text-xs dark:border-slate-600 dark:text-slate-300">
               HABIT NAMES
             </th>
             <th className="border border-slate-200 px-2 py-2 text-center font-bold text-slate-700 w-12 text-xs dark:border-slate-600 dark:text-slate-300">
@@ -77,14 +77,14 @@ export default function HabitGrid({
             <th className="border border-slate-200 px-2 py-2 text-center font-bold text-slate-700 w-16 text-xs dark:border-slate-600 dark:text-slate-300">
               Days Complete
             </th>
-            <th className="border border-slate-200 px-2 py-2 text-center font-bold text-slate-700 w-10 text-xs dark:border-slate-600 dark:text-slate-300">
+            <th className="border border-slate-200 px-2 py-2 text-center font-bold text-slate-700 w-12 text-xs dark:border-slate-600 dark:text-slate-300">
               Actions
             </th>
           </tr>
           <tr className="bg-slate-50/80 dark:bg-slate-800/80">
-            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-xs dark:border-slate-600 dark:text-slate-400"></th>
-            <th className="border border-slate-200 px-2 py-1 text-left font-semibold text-slate-500 text-xs dark:border-slate-600 dark:text-slate-400"></th>
-            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-xs dark:border-slate-600 dark:text-slate-400">
+            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-[10px] dark:border-slate-600 dark:text-slate-400"></th>
+            <th className="border border-slate-200 px-2 py-1 text-left font-semibold text-slate-500 text-[10px] dark:border-slate-600 dark:text-slate-400"></th>
+            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-[10px] dark:border-slate-600 dark:text-slate-400">
               Days
             </th>
             {Array.from({ length: daysInMonth }, (_, i) => {
@@ -92,15 +92,15 @@ export default function HabitGrid({
               return (
                 <th
                   key={i}
-                  className={`border border-slate-200 px-0.5 py-1 text-center font-semibold text-slate-600 text-[10px] ${weekColors[weekIndex]} dark:border-slate-600 dark:text-slate-400`}
+                  className={`border border-slate-200 px-0.5 py-1 text-center font-semibold text-slate-600 text-[9px] ${weekColors[weekIndex]} dark:border-slate-600 dark:text-slate-400`}
                 >
                   {i + 1}
                 </th>
               );
             })}
-            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-xs dark:border-slate-600 dark:text-slate-400"></th>
-            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-xs dark:border-slate-600 dark:text-slate-400"></th>
-            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-xs dark:border-slate-600 dark:text-slate-400"></th>
+            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-[10px] dark:border-slate-600 dark:text-slate-400"></th>
+            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-[10px] dark:border-slate-600 dark:text-slate-400"></th>
+            <th className="border border-slate-200 px-2 py-1 text-center font-semibold text-slate-500 text-[10px] dark:border-slate-600 dark:text-slate-400"></th>
           </tr>
         </thead>
         <tbody>
@@ -109,13 +109,13 @@ export default function HabitGrid({
               key={habit.id}
               className="hover:bg-violet-50/50 dark:hover:bg-violet-900/30 transition-colors"
             >
-              <td className="border border-slate-200 px-2 py-2 text-center text-slate-600 font-semibold text-xs dark:border-slate-600 dark:text-slate-400">
+              <td className="border border-slate-200 px-2 py-1.5 text-center text-slate-600 font-semibold text-xs dark:border-slate-600 dark:text-slate-400">
                 {index + 1}
               </td>
-              <td className="border border-slate-200 px-2 py-2 text-left text-slate-800 font-bold text-xs dark:border-slate-600 dark:text-slate-200">
+              <td className="border border-slate-200 px-2 py-1.5 text-left text-slate-800 font-bold text-xs dark:border-slate-600 dark:text-slate-200">
                 {habit.name}
               </td>
-              <td className="border border-slate-200 px-2 py-2 text-center text-slate-700 font-semibold text-xs dark:border-slate-600 dark:text-slate-300">
+              <td className="border border-slate-200 px-2 py-1.5 text-center text-slate-700 font-semibold text-xs dark:border-slate-600 dark:text-slate-300">
                 {habit.goalDays}
               </td>
               {Array.from({ length: daysInMonth }, (_, i) => {
@@ -129,16 +129,16 @@ export default function HabitGrid({
                   >
                     <button
                       onClick={() => onToggleCompletion(habit.id, day)}
-                      className="w-5 h-5 flex items-center justify-center mx-auto hover:scale-125 transition-transform duration-200"
+                      className="w-4 h-4 flex items-center justify-center mx-auto hover:scale-110 transition-transform duration-200"
                     >
                       {completed ? (
                         <Check
-                          className="w-4 h-4 text-emerald-600 dark:text-emerald-400"
+                          className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"
                           strokeWidth={3}
                         />
                       ) : (
                         <Square
-                          className="w-4 h-4 text-slate-300 dark:text-slate-600"
+                          className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600"
                           strokeWidth={2}
                         />
                       )}
@@ -146,19 +146,19 @@ export default function HabitGrid({
                   </td>
                 );
               })}
-              <td className="border border-slate-200 px-2 py-2 text-center text-slate-800 font-bold text-xs dark:border-slate-600 dark:text-slate-200">
+              <td className="border border-slate-200 px-2 py-1.5 text-center text-slate-800 font-bold text-xs dark:border-slate-600 dark:text-slate-200">
                 {getCompletionCount(habit)}/{habit.goalDays}
               </td>
-              <td className="border border-slate-200 px-2 py-2 text-center text-slate-800 font-bold text-xs dark:border-slate-600 dark:text-slate-200">
+              <td className="border border-slate-200 px-2 py-1.5 text-center text-slate-800 font-bold text-xs dark:border-slate-600 dark:text-slate-200">
                 {getCompletionCount(habit)}
               </td>
-              <td className="border border-slate-200 px-2 py-2 text-center dark:border-slate-600">
+              <td className="border border-slate-200 px-2 py-1.5 text-center dark:border-slate-600">
                 <button
                   onClick={() => onDeleteHabit(habit.id)}
                   className="p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300"
                   title="Delete habit"
                 >
-                  <Trash2 className="w-3.5 h-3.5" strokeWidth={2} />
+                  <Trash2 className="w-3 h-3" strokeWidth={2} />
                 </button>
               </td>
             </tr>
