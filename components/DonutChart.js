@@ -1,32 +1,48 @@
-'use client';
+"use client";
 
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-
-const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7c7c', '#8dd1e1'];
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 export default function DonutChart({ percentage, color, size = 120 }) {
+  const safePercentage = Math.max(0, Math.min(100, percentage || 0));
   const data = [
-    { name: 'Completed', value: percentage },
-    { name: 'Remaining', value: 100 - percentage }
+    { name: "Completed", value: safePercentage },
+    { name: "Remaining", value: 100 - safePercentage },
   ];
 
   return (
-    <ResponsiveContainer width={size} height={size}>
-      <PieChart>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          innerRadius={size * 0.35}
-          outerRadius={size * 0.45}
-          startAngle={90}
-          endAngle={-270}
-          dataKey="value"
-        >
-          <Cell fill={color} />
-          <Cell fill="#e5e7eb" />
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <div
+      className="relative inline-flex items-center justify-center"
+      style={{ width: size, height: size }}
+    >
+      <ResponsiveContainer width={size} height={size}>
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={size * 0.35}
+            outerRadius={size * 0.45}
+            startAngle={90}
+            endAngle={-270}
+            dataKey="value"
+            isAnimationActive={true}
+            animationDuration={600}
+            animationEasing="ease-out"
+          >
+            <Cell fill={color} className="transition-all duration-300" />
+            <Cell
+              fill="#e5e7eb"
+              className="dark:fill-slate-700 transition-all duration-300"
+            />
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <span
+        className="absolute font-bold text-slate-700 dark:text-slate-200 pointer-events-none"
+        style={{ fontSize: size * 0.18 }}
+      >
+        {Math.round(safePercentage)}%
+      </span>
+    </div>
   );
 }
