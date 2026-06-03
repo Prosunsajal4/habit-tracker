@@ -29,14 +29,9 @@ const COLORS = [
 ];
 
 export default function Analytics() {
-  const [habits, setHabits] = useState([]);
-  const [completions, setCompletions] = useState({});
+  const [habits, setHabits] = useState(() => getHabits() || []);
+  const [completions, setCompletions] = useState(() => getCompletions() || {});
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-
-  useEffect(() => {
-    setHabits(getHabits() || []);
-    setCompletions(getCompletions() || {});
-  }, []);
 
   const calculateHabitStats = () => {
     return habits.map((habit) => {
