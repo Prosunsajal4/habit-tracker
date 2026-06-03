@@ -302,14 +302,16 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
-            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200">
+            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
+              <span className="w-1 h-3 bg-violet-500 rounded-full" />
               Habit Completed Per Day %
             </h3>
             <LineChartComponent data={dailyData} color="#7c3aed" height={120} />
           </div>
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
-            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200">
+            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
+              <span className="w-1 h-3 bg-emerald-500 rounded-full" />
               Habit Completed Per Week %
             </h3>
             <LineChartComponent
@@ -318,8 +320,9 @@ export default function Home() {
               height={120}
             />
           </div>
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
-            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200">
+            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
+              <span className="w-1 h-3 bg-amber-500 rounded-full" />
               Habit Completed Per Month %
             </h3>
             <LineChartComponent
