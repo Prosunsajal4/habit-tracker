@@ -49,7 +49,7 @@ export default function HabitGrid({
   };
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm dark:border-slate-700 dark:shadow-slate-900/50">
+    <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm dark:border-slate-700 dark:shadow-slate-900/50 transition-shadow hover:shadow-md">
       <table className="w-full border-collapse">
         <thead>
           <tr className="bg-slate-50 dark:bg-slate-800">
@@ -107,7 +107,7 @@ export default function HabitGrid({
           {habits.map((habit, index) => (
             <tr
               key={habit.id}
-              className="hover:bg-violet-50/50 dark:hover:bg-violet-900/30 transition-colors"
+              className="hover:bg-violet-50/50 dark:hover:bg-violet-900/20 transition-colors duration-150 group"
             >
               <td className="border border-slate-200 px-2 py-1.5 text-center text-slate-600 font-semibold text-xs dark:border-slate-600 dark:text-slate-400">
                 {index + 1}
