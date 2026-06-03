@@ -8,6 +8,8 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Area,
+  ComposedChart,
 } from "recharts";
 
 export default function LineChartComponent({
@@ -15,9 +17,20 @@ export default function LineChartComponent({
   color = "#8884d8",
   height = 200,
 }) {
+  const gradientId = `lineGradient-${color.replace("#", "")}`;
+
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <LineChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
+      <ComposedChart
+        data={data}
+        margin={{ top: 8, right: 8, left: -16, bottom: 0 }}
+      >
+        <defs>
+          <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity={0.25} />
+            <stop offset="100%" stopColor={color} stopOpacity={0} />
+          </linearGradient>
+        </defs>
         <CartesianGrid
           strokeDasharray="3 3"
           stroke="#e5e7eb"
@@ -52,6 +65,14 @@ export default function LineChartComponent({
           formatter={(value) => [`${Number(value).toFixed(1)}%`, "Completion"]}
           cursor={{ stroke: color, strokeWidth: 1, strokeDasharray: "3 3" }}
         />
+        <Area
+          type="monotone"
+          dataKey="value"
+          stroke="none"
+          fill={`url(#${gradientId})`}
+          animationDuration={600}
+          isAnimationActive={true}
+        />
         <Line
           type="monotone"
           dataKey="value"
@@ -61,7 +82,7 @@ export default function LineChartComponent({
           activeDot={{ r: 6, strokeWidth: 2, stroke: "#fff" }}
           animationDuration={600}
         />
-      </LineChart>
+      </ComposedChart>
     </ResponsiveContainer>
   );
 }
