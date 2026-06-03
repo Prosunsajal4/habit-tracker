@@ -272,9 +272,9 @@ export default function Analytics() {
           </div>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl shadow-pink-500/15 p-6 border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 dark:shadow-pink-500/25">
+        <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl shadow-pink-500/15 p-6 border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 dark:shadow-pink-500/25 hover:shadow-2xl transition-shadow duration-300">
           <h2 className="text-xl font-extrabold text-slate-800 mb-6 flex items-center gap-3 dark:text-slate-100">
-            <span className="w-2 h-6 bg-gradient-to-b from-pink-600 to-rose-600 rounded-full"></span>
+            <span className="w-2 h-6 bg-gradient-to-b from-pink-600 to-rose-600 rounded-full" />
             Individual Habit Performance
           </h2>
           <div className="space-y-4">
@@ -291,13 +291,13 @@ export default function Analytics() {
                     {((habit.completed / habit.goalDays) * 100).toFixed(1)}%
                   </p>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3 dark:bg-slate-600">
+                <div className="w-full bg-slate-200 rounded-full h-3 dark:bg-slate-600 overflow-hidden">
                   <div
-                    className="bg-gradient-to-r from-pink-500 to-rose-500 h-3 rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-pink-500 to-rose-500 h-3 rounded-full transition-all duration-700"
                     style={{
-                      width: `${(habit.completed / habit.goalDays) * 100}%`,
+                      width: `${Math.min(100, (habit.completed / habit.goalDays) * 100)}%`,
                     }}
-                  ></div>
+                  />
                 </div>
                 <p className="text-sm text-slate-500 mt-3 dark:text-slate-400">
                   {habit.completed} of {habit.goalDays} days completed
