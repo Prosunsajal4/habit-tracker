@@ -22,24 +22,19 @@ import {
 import { toast } from "react-toastify";
 
 export default function Home() {
-  const [habits, setHabitsState] = useState([]);
-  const [completions, setCompletionsState] = useState({});
-  const [selectedMonth, setSelectedMonthState] = useState({
-    year: new Date().getFullYear(),
-    month: new Date().getMonth(),
+  const [habits, setHabitsState] = useState(() => getHabits() || []);
+  const [completions, setCompletionsState] = useState(() => getCompletions() || {});
+  const [selectedMonth, setSelectedMonthState] = useState(() => {
+    const stored = getSelectedMonth();
+    return (
+      stored || {
+        year: new Date().getFullYear(),
+        month: new Date().getMonth(),
+      }
+    );
   });
   const [showModal, setShowModal] = useState(false);
   const [editingHabit, setEditingHabit] = useState(null);
-
-  useEffect(() => {
-    const storedHabits = getHabits();
-    const storedCompletions = getCompletions();
-    const storedMonth = getSelectedMonth();
-
-    if (storedHabits) setHabitsState(storedHabits);
-    if (storedCompletions) setCompletionsState(storedCompletions);
-    if (storedMonth) setSelectedMonthState(storedMonth);
-  }, []);
 
   useEffect(() => {
     setHabits(habits);
