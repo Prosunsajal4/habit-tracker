@@ -19,7 +19,7 @@ export default function Navigation() {
     <nav className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 shadow-sm sticky top-0 z-40">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-12">
-          <div className="flex gap-1">
+          <div className="flex gap-1 p-0.5 bg-slate-100/60 dark:bg-slate-800/60 rounded-xl">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -30,8 +30,8 @@ export default function Navigation() {
                   href={item.href}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all duration-200 relative text-xs ${
                     isActive
-                      ? "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800/50"
+                      ? "bg-white text-violet-700 shadow-sm dark:bg-slate-900 dark:text-violet-300"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-white/60 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-900/40"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" strokeWidth={2} />
