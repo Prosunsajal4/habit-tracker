@@ -129,12 +129,18 @@ export default function HabitGrid({
                   >
                     <button
                       onClick={() => onToggleCompletion(habit.id, day)}
-                      className="w-4 h-4 flex items-center justify-center mx-auto hover:scale-110 transition-transform duration-200"
+                      aria-pressed={completed}
+                      aria-label={`Toggle day ${day} for ${habit.name}`}
+                      className={`w-5 h-5 flex items-center justify-center mx-auto rounded-md transition-all duration-200 hover:scale-125 active:scale-95 ${
+                        completed
+                          ? "bg-emerald-100 dark:bg-emerald-900/40"
+                          : "hover:bg-slate-200/60 dark:hover:bg-slate-600/40"
+                      }`}
                     >
                       {completed ? (
                         <Check
-                          className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"
-                          strokeWidth={3}
+                          className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 transition-transform"
+                          strokeWidth={3.5}
                         />
                       ) : (
                         <Square
