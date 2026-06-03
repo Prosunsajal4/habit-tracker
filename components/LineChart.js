@@ -1,40 +1,65 @@
-'use client';
+"use client";
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
-export default function LineChartComponent({ data, color = '#8884d8', height = 200 }) {
+export default function LineChartComponent({
+  data,
+  color = "#8884d8",
+  height = 200,
+}) {
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <LineChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-        <XAxis 
-          dataKey="name" 
+      <LineChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
+        <CartesianGrid
+          strokeDasharray="3 3"
+          stroke="#e5e7eb"
+          className="dark:opacity-20"
+        />
+        <XAxis
+          dataKey="name"
           stroke="#6b7280"
-          fontSize={12}
+          fontSize={11}
           tickLine={false}
           axisLine={false}
+          className="dark:[&_text]:fill-slate-400"
         />
-        <YAxis 
+        <YAxis
           stroke="#6b7280"
-          fontSize={12}
+          fontSize={11}
           tickLine={false}
           axisLine={false}
           domain={[0, 100]}
+          tickFormatter={(v) => `${v}%`}
+          className="dark:[&_text]:fill-slate-400"
         />
-        <Tooltip 
-          contentStyle={{ 
-            backgroundColor: '#ffffff',
-            border: '1px solid #e5e7eb',
-            borderRadius: '8px'
+        <Tooltip
+          contentStyle={{
+            backgroundColor: "rgba(255,255,255,0.95)",
+            border: "1px solid #e5e7eb",
+            borderRadius: "10px",
+            fontSize: "12px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
           }}
+          labelStyle={{ color: "#475569", fontWeight: 600 }}
+          formatter={(value) => [`${Number(value).toFixed(1)}%`, "Completion"]}
+          cursor={{ stroke: color, strokeWidth: 1, strokeDasharray: "3 3" }}
         />
-        <Line 
-          type="monotone" 
-          dataKey="value" 
-          stroke={color} 
-          strokeWidth={2}
-          dot={{ fill: color, r: 4 }}
-          activeDot={{ r: 6 }}
+        <Line
+          type="monotone"
+          dataKey="value"
+          stroke={color}
+          strokeWidth={2.5}
+          dot={{ fill: color, r: 3.5, strokeWidth: 0 }}
+          activeDot={{ r: 6, strokeWidth: 2, stroke: "#fff" }}
+          animationDuration={600}
         />
       </LineChart>
     </ResponsiveContainer>
