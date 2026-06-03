@@ -11,13 +11,8 @@ import {
 import { toast } from "react-toastify";
 
 export default function Settings() {
-  const [habits, setHabitsState] = useState([]);
-  const [completions, setCompletionsState] = useState({});
-
-  useEffect(() => {
-    setHabitsState(getHabits() || []);
-    setCompletionsState(getCompletions() || {});
-  }, []);
+  const [habits, setHabitsState] = useState(() => getHabits() || []);
+  const [completions, setCompletionsState] = useState(() => getCompletions() || {});
 
   useEffect(() => {
     setHabits(habits);
