@@ -36,6 +36,9 @@ export default function Navigation() {
                 >
                   <Icon className="w-3.5 h-3.5" strokeWidth={2} />
                   {item.label}
+                  {isActive && (
+                    <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-violet-600 dark:bg-violet-400" />
+                  )}
                 </Link>
               );
             })}
