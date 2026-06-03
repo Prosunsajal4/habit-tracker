@@ -195,10 +195,10 @@ export default function Settings() {
                 {habits.map((habit) => (
                   <div
                     key={habit.id}
-                    className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-colors dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
+                    className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-200 hover:scale-[1.01] hover:shadow-sm dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
                   >
-                    <div>
-                      <p className="font-bold text-slate-800 dark:text-slate-200 text-base">
+                    <div className="min-w-0">
+                      <p className="font-bold text-slate-800 dark:text-slate-200 text-base truncate">
                         {habit.name}
                       </p>
                       <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -207,8 +207,9 @@ export default function Settings() {
                     </div>
                     <button
                       onClick={() => handleDeleteHabit(habit.id)}
-                      className="p-3 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-colors dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300"
+                      className="p-3 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300"
                       title="Delete habit"
+                      aria-label={`Delete ${habit.name}`}
                     >
                       <Trash2 className="w-5 h-5" strokeWidth={2} />
                     </button>
