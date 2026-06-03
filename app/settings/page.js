@@ -145,13 +145,14 @@ export default function Settings() {
             <div className="space-y-4">
               <button
                 onClick={handleExportData}
-                className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-105 text-base"
+                disabled={habits.length === 0}
+                className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.99] text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <Download className="w-5 h-5" strokeWidth={2.5} />
                 Export Data (Backup)
               </button>
               <div>
-                <label className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 cursor-pointer text-base">
+                <label className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-[1.02] active:scale-[0.99] cursor-pointer text-base">
                   <Upload className="w-5 h-5" strokeWidth={2.5} />
                   Import Data (Restore)
                 </label>
@@ -162,13 +163,19 @@ export default function Settings() {
                   className="hidden"
                 />
               </div>
-              <button
-                onClick={handleClearAllData}
-                className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-rose-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-red-700 hover:to-rose-700 transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 text-base"
-              >
-                <RotateCcw className="w-5 h-5" strokeWidth={2.5} />
-                Clear All Data
-              </button>
+              <div className="pt-3 mt-3 border-t border-dashed border-red-200 dark:border-red-900/40">
+                <p className="text-[10px] font-semibold text-red-500 dark:text-red-400 uppercase tracking-wider mb-2 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
+                  Danger Zone
+                </p>
+                <button
+                  onClick={handleClearAllData}
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-rose-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-red-700 hover:to-rose-700 transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.99] text-base"
+                >
+                  <RotateCcw className="w-5 h-5" strokeWidth={2.5} />
+                  Clear All Data
+                </button>
+              </div>
             </div>
           </div>
 
