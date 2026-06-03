@@ -49,7 +49,8 @@ export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
               name="name"
               defaultValue={habit?.name || ""}
               required
-              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 hover:border-slate-300 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:hover:border-slate-500 text-sm"
+              autoFocus
+              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500/30 focus:border-violet-500 outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 hover:border-slate-300 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:hover:border-slate-500 text-sm shadow-sm focus:shadow-md"
               placeholder="e.g., Exercise for 30 minutes"
             />
           </div>
@@ -64,7 +65,7 @@ export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
               min="1"
               max="31"
               required
-              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 hover:border-slate-300 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:hover:border-slate-500 text-sm"
+              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500/30 focus:border-violet-500 outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 hover:border-slate-300 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:hover:border-slate-500 text-sm shadow-sm focus:shadow-md"
             />
           </div>
           <div className="flex gap-2 pt-2">
