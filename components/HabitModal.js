@@ -1,6 +1,6 @@
 "use client";
 
-import { X, Sparkles, Pencil } from "lucide-react";
+import { X, Sparkles, Pencil, Check, Ban } from "lucide-react";
 
 export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
   if (!isOpen) return null;
@@ -72,14 +72,16 @@ export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-3 py-2 border-2 border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 font-semibold text-sm dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:border-slate-500"
+              className="flex-1 px-3 py-2 border-2 border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 font-semibold text-sm dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:border-slate-500 flex items-center justify-center gap-1.5"
             >
+              <Ban className="w-3.5 h-3.5" />
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 px-3 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-all duration-200 font-semibold shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 text-sm"
+              className="flex-1 px-3 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-lg hover:from-violet-700 hover:to-fuchsia-700 transition-all duration-200 font-semibold shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 text-sm flex items-center justify-center gap-1.5 active:scale-[0.98]"
             >
+              <Check className="w-3.5 h-3.5" strokeWidth={3} />
               {habit ? "Update" : "Add"}
             </button>
           </div>
