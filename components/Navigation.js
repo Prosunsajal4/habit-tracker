@@ -42,15 +42,16 @@ export default function Navigation() {
           </div>
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 text-slate-600 dark:text-slate-400"
+            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 text-slate-600 dark:text-slate-400 hover:rotate-12 active:scale-95"
             title={
               theme === "light" ? "Switch to dark mode" : "Switch to light mode"
             }
+            aria-label="Toggle color theme"
           >
             {theme === "light" ? (
-              <Moon className="w-4 h-4" />
+              <Moon className="w-4 h-4 transition-transform duration-300" />
             ) : (
-              <Sun className="w-4 h-4" />
+              <Sun className="w-4 h-4 transition-transform duration-300" />
             )}
           </button>
         </div>
