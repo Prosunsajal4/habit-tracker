@@ -13,6 +13,8 @@ export default function DonutChart({ percentage, color, size = 120 }) {
     <div
       className="relative inline-flex items-center justify-center"
       style={{ width: size, height: size }}
+      role="img"
+      aria-label={`${Math.round(safePercentage)} percent complete`}
     >
       <ResponsiveContainer width={size} height={size}>
         <PieChart>
