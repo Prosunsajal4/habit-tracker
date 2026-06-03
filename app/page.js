@@ -270,15 +270,19 @@ export default function Home() {
         </div>
 
         <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 mb-4">
-          <h2 className="text-sm font-bold text-slate-900 mb-4 dark:text-white">
+          <h2 className="text-sm font-bold text-slate-900 mb-4 dark:text-white flex items-center gap-2">
+            <span className="w-1 h-4 bg-gradient-to-b from-violet-500 to-fuchsia-500 rounded-full" />
             Weekly Progress
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {weeklyProgress.map((wp, index) => (
-              <div key={wp.week} className="flex flex-col items-center">
+              <div
+                key={wp.week}
+                className="flex flex-col items-center p-2.5 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-all duration-200"
+              >
                 <div
                   style={{ backgroundColor: weekColors[index] }}
-                  className="p-2 rounded-lg mb-1.5"
+                  className="p-2 rounded-lg mb-1.5 shadow-sm"
                 >
                   <DonutChart
                     percentage={wp.percentage}
