@@ -196,23 +196,36 @@ export default function Analytics() {
                 {habitStats.map((habit) => (
                   <div
                     key={habit.id}
-                    className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-colors dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
+                    className="p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-200 dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
                   >
-                    <div>
-                      <p className="font-bold text-slate-800 dark:text-slate-200 text-base">
-                        {habit.name}
-                      </p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">
-                        Goal: {habit.goalDays} days/month
-                      </p>
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <p className="font-bold text-slate-800 dark:text-slate-200 text-base">
+                          {habit.name}
+                        </p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                          Goal: {habit.goalDays} days/month
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-2xl font-extrabold text-purple-600 dark:text-purple-400">
+                          {habit.completed}/{habit.goalDays}
+                        </p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                          {((habit.completed / habit.goalDays) * 100).toFixed(
+                            1,
+                          )}
+                          %
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-extrabold text-purple-600 dark:text-purple-400">
-                        {habit.completed}/{habit.goalDays}
-                      </p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">
-                        {((habit.completed / habit.goalDays) * 100).toFixed(1)}%
-                      </p>
+                    <div className="w-full bg-slate-200/80 rounded-full h-1.5 dark:bg-slate-600/80">
+                      <div
+                        className="h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500 transition-all duration-500"
+                        style={{
+                          width: `${Math.min(100, (habit.completed / habit.goalDays) * 100)}%`,
+                        }}
+                      />
                     </div>
                   </div>
                 ))}
