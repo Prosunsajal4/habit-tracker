@@ -161,10 +161,11 @@ export default function HabitGrid({
               <td className="border border-slate-200 px-2 py-1.5 text-center dark:border-slate-600">
                 <button
                   onClick={() => onDeleteHabit(habit.id)}
-                  className="p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300"
+                  className="p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-all duration-200 dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300 hover:scale-110 active:scale-95"
                   title="Delete habit"
+                  aria-label={`Delete habit ${habit.name}`}
                 >
-                  <Trash2 className="w-3 h-3" strokeWidth={2} />
+                  <Trash2 className="w-3 h-3" strokeWidth={2.5} />
                 </button>
               </td>
             </tr>
