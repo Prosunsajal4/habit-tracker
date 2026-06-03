@@ -124,14 +124,14 @@ export default function Analytics() {
                 Track your habit performance and insights
               </p>
             </div>
-            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-xl px-4 py-3 border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-lg dark:bg-slate-800/15 dark:border-slate-700/20">
+            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-xl px-4 py-3 border border-white/20 hover:bg-white/25 transition-all duration-300 shadow-lg dark:bg-slate-800/15 dark:border-slate-700/20">
               <label className="text-base font-semibold text-purple-100 dark:text-purple-200">
                 Year:
               </label>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(Number(e.target.value))}
-                className="bg-transparent text-white outline-none cursor-pointer font-semibold text-base dark:text-slate-200"
+                className="bg-transparent text-white outline-none cursor-pointer font-semibold text-base dark:text-slate-200 appearance-none pr-1"
               >
                 {[2024, 2025, 2026, 2027, 2028].map((year) => (
                   <option
@@ -143,6 +143,7 @@ export default function Analytics() {
                   </option>
                 ))}
               </select>
+              <span className="text-white/70 text-xs">▾</span>
             </div>
           </div>
         </div>
