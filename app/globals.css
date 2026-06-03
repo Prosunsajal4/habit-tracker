@@ -86,3 +86,13 @@ a:focus:not(:focus-visible),
 input:focus:not(:focus-visible) {
   outline: none;
 }
+
+::selection {
+  background-color: #c4b5fd;
+  color: #1e1b4b;
+}
+
+.dark ::selection {
+  background-color: #5b21b6;
+  color: #f5f3ff;
+}
