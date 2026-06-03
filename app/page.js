@@ -378,6 +378,15 @@ export default function Home() {
         onSave={handleSaveHabit}
         habit={editingHabit}
       />
+
+      <footer className="border-t border-slate-200/60 dark:border-slate-800/60 mt-8 py-5 text-center text-[11px] text-slate-500 dark:text-slate-400">
+        <p>
+          Built with consistency in mind. Keep your streak going ·{" "}
+          <span className="font-semibold text-violet-600 dark:text-violet-400">
+            Smart Habit Tracker
+          </span>
+        </p>
+      </footer>
     </div>
   );
 }
