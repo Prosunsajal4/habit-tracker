@@ -341,18 +341,19 @@ export default function Home() {
             </h2>
           </div>
           {habits.length === 0 ? (
-            <div className="text-center py-8">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-violet-100 dark:bg-violet-900/30 rounded-full mb-2">
+            <div className="text-center py-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-100 to-fuchsia-100 dark:from-violet-900/40 dark:to-fuchsia-900/40 rounded-2xl mb-3 shadow-sm">
                 <Plus
-                  className="w-6 h-6 text-violet-600 dark:text-violet-400"
-                  strokeWidth={2}
+                  className="w-7 h-7 text-violet-600 dark:text-violet-400"
+                  strokeWidth={2.5}
                 />
               </div>
-              <p className="text-xs font-semibold text-slate-600 mb-1 dark:text-slate-400">
+              <p className="text-sm font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 No habits yet
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-500">
-                Add your first habit to start tracking your progress!
+              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+                Add your first habit to start tracking your progress and
+                building streaks!
               </p>
             </div>
           ) : (
