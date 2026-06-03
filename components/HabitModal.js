@@ -20,7 +20,7 @@ export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="flex justify-between items-center p-4 border-b border-violet-700/20 bg-gradient-to-r from-violet-600 via-violet-600 to-fuchsia-600 dark:from-violet-700 dark:via-violet-700 dark:to-fuchsia-700">
           <h2 className="text-sm font-bold text-white flex items-center gap-2">
