@@ -229,8 +229,9 @@ export default function Home() {
 
       <main className="container mx-auto px-4 py-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
-            <div className="flex items-center justify-between">
+          <div className="relative bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 overflow-hidden group hover:shadow-md transition-all duration-300">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-emerald-100/30 dark:from-emerald-900/0 dark:to-emerald-900/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1 dark:text-slate-400">
                   Total Goal Completed
@@ -239,7 +240,7 @@ export default function Home() {
                   {totalGoalCompleted}
                 </p>
               </div>
-              <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-lg">
+              <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
                 <TrendingUp
                   className="w-5 h-5 text-emerald-600 dark:text-emerald-400"
                   strokeWidth={2}
@@ -247,8 +248,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4">
-            <div className="flex items-center justify-between">
+          <div className="relative bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 overflow-hidden group hover:shadow-md transition-all duration-300">
+            <div className="absolute inset-0 bg-gradient-to-br from-rose-50/0 to-rose-100/30 dark:from-rose-900/0 dark:to-rose-900/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="relative flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1 dark:text-slate-400">
                   Total Goal Incomplete
@@ -257,7 +259,7 @@ export default function Home() {
                   {totalGoalIncomplete}
                 </p>
               </div>
-              <div className="bg-rose-100 dark:bg-rose-900/30 p-2 rounded-lg">
+              <div className="bg-rose-100 dark:bg-rose-900/30 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
                 <TrendingDown
                   className="w-5 h-5 text-rose-600 dark:text-rose-400"
                   strokeWidth={2}
