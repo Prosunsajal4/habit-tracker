@@ -136,6 +136,33 @@ export default function Settings() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <InfoTile
+            label="Habits"
+            value={habits.length}
+            accent="from-violet-500 to-fuchsia-500"
+          />
+          <InfoTile
+            label="Days Tracked"
+            value={Object.keys(completions).filter((k) => completions[k]?.length > 0).length}
+            accent="from-emerald-500 to-teal-500"
+          />
+          <InfoTile
+            label="Total Check-ins"
+            value={Object.values(completions).reduce(
+              (s, arr) => s + (arr?.length || 0),
+              0,
+            )}
+            accent="from-amber-500 to-orange-500"
+          />
+          <InfoTile
+            label="Storage"
+            value="Local"
+            sub="Browser only"
+            accent="from-sky-500 to-blue-500"
+          />
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl shadow-blue-500/15 p-6 border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 dark:shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
             <h2 className="text-xl font-extrabold text-slate-800 mb-6 flex items-center gap-3 dark:text-slate-100">
@@ -229,6 +256,33 @@ export default function Settings() {
           </div>
         </div>
       </main>
+
+      <footer className="container mx-auto px-4 pb-8 -mt-2">
+        <p className="text-center text-[11px] text-slate-400 dark:text-slate-500">
+          Your data lives in your browser. Export regularly to keep a backup.
+        </p>
+      </footer>
+    </div>
+  );
+}
+
+function InfoTile({ label, value, sub, accent }) {
+  return (
+    <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 p-4 overflow-hidden hover:shadow-md transition-all duration-200">
+      <div
+        className={`absolute -top-6 -right-6 w-16 h-16 rounded-full bg-gradient-to-br ${accent} opacity-10 blur-xl`}
+      />
+      <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-400">
+        {label}
+      </p>
+      <p className="text-xl font-bold text-slate-900 dark:text-white mt-1">
+        {value}
+      </p>
+      {sub && (
+        <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+          {sub}
+        </p>
+      )}
     </div>
   );
 }
