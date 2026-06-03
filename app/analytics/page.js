@@ -13,6 +13,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { Target, Flame, Trophy, Calendar } from "lucide-react";
 import { getHabits, getCompletions } from "@/lib/storage";
 import { getMonthName } from "@/lib/utils";
 
@@ -103,6 +104,12 @@ export default function Analytics() {
     value: h.completed,
   }));
 
+  const totalCompleted = habitStats.reduce((s, h) => s + h.completed, 0);
+  const totalGoal = habitStats.reduce((s, h) => s + (h.goalDays || 0), 0);
+  const bestHabit = [...habitStats].sort((a, b) => b.rate - a.rate)[0];
+  const activeHabits = habitStats.length;
+  const bestMonth = [...monthlyStats].sort((a, b) => b.rate - a.rate)[0];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-900 dark:via-purple-900/30 dark:to-pink-900/30 transition-colors duration-300">
       <header className="bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 text-white shadow-2xl shadow-purple-500/20 relative overflow-hidden dark:from-purple-900 dark:via-fuchsia-900 dark:to-pink-900">
@@ -142,6 +149,35 @@ export default function Analytics() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <SummaryTile
+            icon={Target}
+            label="Total Completed"
+            value={totalCompleted}
+            accent="from-violet-500 to-fuchsia-500"
+          />
+          <SummaryTile
+            icon={Trophy}
+            label="Top Habit"
+            value={bestHabit ? bestHabit.name : "—"}
+            sub={bestHabit ? `${bestHabit.rate.toFixed(1)}%` : ""}
+            accent="from-amber-500 to-orange-500"
+          />
+          <SummaryTile
+            icon={Flame}
+            label="Active Habits"
+            value={activeHabits}
+            accent="from-rose-500 to-pink-500"
+          />
+          <SummaryTile
+            icon={Calendar}
+            label="Best Month"
+            value={bestMonth ? bestMonth.name : "—"}
+            sub={bestMonth ? `${bestMonth.rate.toFixed(1)}%` : ""}
+            accent="from-emerald-500 to-teal-500"
+          />
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl shadow-purple-500/15 p-6 border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 dark:shadow-purple-500/25">
             <h2 className="text-xl font-extrabold text-slate-800 mb-6 flex items-center gap-3 dark:text-slate-100">
@@ -257,6 +293,33 @@ export default function Analytics() {
           </div>
         </div>
       </main>
+    </div>
+  );
+}
+
+function SummaryTile({ icon: Icon, label, value, sub, accent }) {
+  return (
+    <div className="bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 p-4 hover:shadow-md transition-all duration-200">
+      <div className="flex items-center gap-3">
+        <div
+          className={`p-2 rounded-lg bg-gradient-to-br ${accent} text-white shadow-sm`}
+        >
+          <Icon className="w-4 h-4" strokeWidth={2.5} />
+        </div>
+        <div className="min-w-0">
+          <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-400 truncate">
+            {label}
+          </p>
+          <p className="text-base font-bold text-slate-900 dark:text-white truncate">
+            {value}
+          </p>
+          {sub && (
+            <p className="text-[10px] text-slate-500 dark:text-slate-400">
+              {sub}
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
