@@ -141,6 +141,20 @@ export default function Settings() {
             label="Days Tracked"
             value={Object.keys(completions).filter((k) => completions[k]?.length > 0).length}
             accent="from-emerald-500 to-teal-500"
+            sub={
+              (() => {
+                let streak = 0;
+                const d = new Date();
+                while (true) {
+                  const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+                  if (completions[k]?.length) {
+                    streak++;
+                    d.setDate(d.getDate() - 1);
+                  } else break;
+                }
+                return streak > 0 ? `🔥 ${streak} day streak` : "No streak yet";
+              })()
+            }
           />
           <InfoTile
             label="Total Check-ins"
