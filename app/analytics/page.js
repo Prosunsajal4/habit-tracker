@@ -108,7 +108,8 @@ export default function Analytics() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-900 dark:via-purple-900/30 dark:to-pink-900/30 transition-colors duration-300">
       <header className="bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 text-white shadow-2xl shadow-purple-500/20 relative overflow-hidden dark:from-purple-900 dark:via-fuchsia-900 dark:to-pink-900">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-white/10 to-purple-600/0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-white/10 to-purple-600/0 animate-pulse"></div>
+        <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/10 blur-3xl"></div>
         <div className="container mx-auto px-4 py-6 relative">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
