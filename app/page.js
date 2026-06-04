@@ -372,17 +372,26 @@ export default function Home() {
             </h2>
           </div>
           {habits.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-100 to-fuchsia-100 dark:from-violet-900/40 dark:to-fuchsia-900/40 rounded-2xl mb-3 shadow-sm">
+            <div className="relative text-center py-12 overflow-hidden">
+              <div
+                className="absolute inset-0 opacity-[0.04] dark:opacity-[0.06] pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+                  backgroundSize: "20px 20px",
+                  color: "#7c3aed",
+                }}
+              />
+              <div className="relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-100 to-fuchsia-100 dark:from-violet-900/40 dark:to-fuchsia-900/40 rounded-2xl mb-3 shadow-sm">
                 <Plus
                   className="w-7 h-7 text-violet-600 dark:text-violet-400"
                   strokeWidth={2.5}
                 />
               </div>
-              <p className="text-sm font-semibold text-slate-700 mb-1 dark:text-slate-300">
+              <p className="relative text-sm font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 No habits yet
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+              <p className="relative text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
                 Add your first habit to start tracking your progress and
                 building streaks!
               </p>
@@ -391,7 +400,7 @@ export default function Home() {
                   setEditingHabit(null);
                   setShowModal(true);
                 }}
-                className="mt-4 inline-flex items-center gap-1.5 bg-violet-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-violet-700 transition-all duration-200 shadow-sm text-xs"
+                className="relative mt-4 inline-flex items-center gap-1.5 bg-violet-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-violet-700 transition-all duration-200 shadow-sm text-xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 Add your first habit
