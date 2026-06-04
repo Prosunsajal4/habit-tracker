@@ -338,10 +338,10 @@ export default function Analytics() {
 
 function SummaryTile({ icon: Icon, label, value, sub, accent }) {
   return (
-    <div className="bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 p-4 hover:shadow-md transition-all duration-200">
+    <div className="group bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default">
       <div className="flex items-center gap-3">
         <div
-          className={`p-2 rounded-lg bg-gradient-to-br ${accent} text-white shadow-sm`}
+          className={`p-2 rounded-lg bg-gradient-to-br ${accent} text-white shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}
         >
           <Icon className="w-4 h-4" strokeWidth={2.5} />
         </div>
