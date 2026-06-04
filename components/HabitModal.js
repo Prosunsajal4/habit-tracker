@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Sparkles, Pencil, Check, Ban } from "lucide-react";
 
 const MAX_NAME = 40;
@@ -8,6 +8,14 @@ const MAX_NAME = 40;
 export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
   const [name, setName] = useState(habit?.name || "");
   if (!isOpen) return null;
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
