@@ -123,7 +123,24 @@ export default function HabitGrid({
                 {index + 1}
               </td>
               <td className="border border-slate-200 px-2 py-1.5 text-left text-slate-800 font-bold text-xs dark:border-slate-600 dark:text-slate-200">
-                {habit.name}
+                <div className="flex flex-col gap-1">
+                  <span className="truncate max-w-[10rem]">{habit.name}</span>
+                  <div
+                    className="h-1 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden"
+                    title={`${getCompletionCount(habit)} / ${habit.goalDays} days`}
+                  >
+                    <div
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        getCompletionCount(habit) >= habit.goalDays
+                          ? "bg-emerald-500"
+                          : "bg-gradient-to-r from-violet-500 to-fuchsia-500"
+                      }`}
+                      style={{
+                        width: `${Math.min(100, (getCompletionCount(habit) / habit.goalDays) * 100)}%`,
+                      }}
+                    />
+                  </div>
+                </div>
               </td>
               <td className="border border-slate-200 px-2 py-1.5 text-center text-slate-700 font-semibold text-xs dark:border-slate-600 dark:text-slate-300">
                 {habit.goalDays}
