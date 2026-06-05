@@ -241,6 +241,10 @@ export default function Home() {
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">
                   {totalGoalCompleted}
                 </p>
+                <p className="text-[10px] text-emerald-600 dark:text-emerald-400 mt-0.5 font-semibold flex items-center gap-1">
+                  <TrendingUp className="w-2.5 h-2.5" />
+                  Keep going
+                </p>
               </div>
               <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
                 <TrendingUp
@@ -259,6 +263,15 @@ export default function Home() {
                 </p>
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">
                   {totalGoalIncomplete}
+                </p>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 font-medium">
+                  {totalGoalCompleted + totalGoalIncomplete > 0
+                    ? `${Math.round(
+                        (totalGoalCompleted /
+                          (totalGoalCompleted + totalGoalIncomplete)) *
+                          100,
+                      )}% complete`
+                    : "—"}
                 </p>
               </div>
               <div className="bg-rose-100 dark:bg-rose-900/30 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
