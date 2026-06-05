@@ -52,9 +52,9 @@ export default function Navigation() {
             aria-label="Toggle color theme"
           >
             {theme === "light" ? (
-              <Moon className="w-4 h-4 transition-transform duration-300" />
+              <Moon className="w-4 h-4 transition-transform duration-300 hover:text-violet-600 dark:hover:text-violet-400" />
             ) : (
-              <Sun className="w-4 h-4 transition-transform duration-300" />
+              <Sun className="w-4 h-4 transition-transform duration-300 hover:text-amber-500" />
             )}
           </button>
         </div>
