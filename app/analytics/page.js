@@ -327,6 +327,11 @@ export default function Analytics() {
           )}
         </div>
       </main>
+      <footer className="container mx-auto px-4 pb-8">
+        <p className="text-center text-[11px] text-slate-400 dark:text-slate-500">
+          Analytics for {selectedYear} · Updated in real time
+        </p>
+      </footer>
     </div>
   );
 }
