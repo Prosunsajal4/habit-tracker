@@ -31,6 +31,11 @@ export default function HabitGrid({
     "bg-indigo-50",
   ];
 
+  const today = new Date();
+  const isCurrentMonth =
+    today.getFullYear() === year && today.getMonth() === month;
+  const todayDay = isCurrentMonth ? today.getDate() : -1;
+
   const formatDateKey = (day) => {
     return `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
   };
@@ -89,10 +94,15 @@ export default function HabitGrid({
             </th>
             {Array.from({ length: daysInMonth }, (_, i) => {
               const weekIndex = Math.floor(i / 7);
+              const isToday = i + 1 === todayDay;
               return (
                 <th
                   key={i}
-                  className={`border border-slate-200 px-0.5 py-1 text-center font-semibold text-slate-600 text-[9px] ${weekColors[weekIndex]} dark:border-slate-600 dark:text-slate-400`}
+                  className={`border border-slate-200 px-0.5 py-1 text-center font-semibold text-[9px] ${
+                    isToday
+                      ? "bg-violet-200 text-violet-800 dark:bg-violet-700/60 dark:text-violet-100"
+                      : `${weekColors[weekIndex]} text-slate-600 dark:text-slate-400`
+                  } dark:border-slate-600`}
                 >
                   {i + 1}
                 </th>
@@ -122,10 +132,15 @@ export default function HabitGrid({
                 const day = i + 1;
                 const weekIndex = Math.floor(i / 7);
                 const completed = isCompleted(habit.id, day);
+                const isToday = day === todayDay;
                 return (
                   <td
                     key={i}
-                    className={`border border-slate-200 px-0.5 py-1 text-center ${weekColors[weekIndex]} dark:border-slate-600`}
+                    className={`border border-slate-200 px-0.5 py-1 text-center ${
+                      isToday
+                        ? "bg-violet-100 dark:bg-violet-900/30 ring-1 ring-inset ring-violet-300 dark:ring-violet-600/50"
+                        : `${weekColors[weekIndex]}`
+                    } dark:border-slate-600`}
                   >
                     <button
                       onClick={() => onToggleCompletion(habit.id, day)}
