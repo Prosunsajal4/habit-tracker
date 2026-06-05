@@ -1,8 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { X, Sparkles, Pencil, Check, Ban } from "lucide-react";
 
+const MAX_NAME = 40;
+
 export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
+  const [name, setName] = useState(habit?.name || "");
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
@@ -41,24 +45,43 @@ export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
         </div>
         <form onSubmit={handleSubmit} className="p-4 space-y-3">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5 dark:text-slate-300">
-              Habit Name
+            <label
+              htmlFor="habit-name"
+              className="block text-xs font-semibold text-slate-700 mb-1.5 dark:text-slate-300 flex justify-between"
+            >
+              <span>Habit Name</span>
+              <span
+                className={`text-[10px] font-normal ${
+                  name.length > MAX_NAME - 5
+                    ? "text-rose-500"
+                    : "text-slate-400 dark:text-slate-500"
+                }`}
+              >
+                {name.length}/{MAX_NAME}
+              </span>
             </label>
             <input
+              id="habit-name"
               type="text"
               name="name"
-              defaultValue={habit?.name || ""}
+              value={name}
+              onChange={(e) => setName(e.target.value.slice(0, MAX_NAME))}
               required
               autoFocus
+              maxLength={MAX_NAME}
               className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500/30 focus:border-violet-500 outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 hover:border-slate-300 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:hover:border-slate-500 text-sm shadow-sm focus:shadow-md"
               placeholder="e.g., Exercise for 30 minutes"
             />
           </div>
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1.5 dark:text-slate-300">
+            <label
+              htmlFor="habit-goal"
+              className="block text-xs font-semibold text-slate-700 mb-1.5 dark:text-slate-300"
+            >
               Goal Days (per month)
             </label>
             <input
+              id="habit-goal"
               type="number"
               name="goalDays"
               defaultValue={habit?.goalDays || 30}
