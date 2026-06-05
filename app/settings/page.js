@@ -185,9 +185,9 @@ export default function Settings() {
                   className="hidden"
                 />
               </div>
-              <div className="pt-3 mt-3 border-t border-dashed border-red-200 dark:border-red-900/40">
-                <p className="text-[10px] font-semibold text-red-500 dark:text-red-400 uppercase tracking-wider mb-2 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
+              <div className="pt-3 mt-3 border-t-2 border-dashed border-red-300 dark:border-red-900/50">
+                <p className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                  <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                   Danger Zone
                 </p>
                 <button
@@ -197,6 +197,9 @@ export default function Settings() {
                   <RotateCcw className="w-5 h-5" strokeWidth={2.5} />
                   Clear All Data
                 </button>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400 text-center mt-2">
+                  Permanently deletes habits and completion history.
+                </p>
               </div>
             </div>
           </div>
