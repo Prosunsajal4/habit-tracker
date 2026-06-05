@@ -112,6 +112,13 @@ export default function Home() {
   const daysInMonth = getDaysInMonth(selectedMonth.year, selectedMonth.month);
   let totalGoalCompleted = 0;
   let totalGoalIncomplete = 0;
+  const today = new Date();
+  const isCurrentMonth =
+    today.getFullYear() === selectedMonth.year &&
+    today.getMonth() === selectedMonth.month;
+  const currentWeekIndex = isCurrentMonth
+    ? Math.min(4, Math.floor((today.getDate() - 1) / 7))
+    : -1;
 
   habits.forEach((habit) => {
     const rate = calculateCompletionRate(
@@ -293,7 +300,11 @@ export default function Home() {
             {weeklyProgress.map((wp, index) => (
               <div
                 key={wp.week}
-                className="flex flex-col items-center p-2.5 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-all duration-200"
+                className={`flex flex-col items-center p-2.5 rounded-lg border transition-all duration-200 ${
+                  index === currentWeekIndex
+                    ? "border-violet-400 dark:border-violet-500 bg-violet-50/50 dark:bg-violet-900/20 ring-1 ring-violet-300/50 dark:ring-violet-600/30"
+                    : "border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50/50 dark:hover:bg-slate-800/30"
+                }`}
               >
                 <div
                   style={{ backgroundColor: weekColors[index] }}
@@ -307,6 +318,11 @@ export default function Home() {
                 </div>
                 <p className="text-xs font-medium text-slate-600 dark:text-slate-400">
                   Week {wp.week}
+                  {index === currentWeekIndex && (
+                    <span className="ml-1 text-violet-600 dark:text-violet-400 font-bold">
+                      •
+                    </span>
+                  )}
                 </p>
                 <p className="text-xs font-bold text-slate-900 dark:text-white">
                   {wp.percentage.toFixed(1)}%
