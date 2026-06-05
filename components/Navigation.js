@@ -34,6 +34,9 @@ export default function Navigation() {
                       : "text-slate-600 hover:text-slate-900 hover:bg-white/60 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-900/40"
                   }`}
                 >
+                  {isActive && (
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full bg-gradient-to-b from-violet-500 to-fuchsia-500" />
+                  )}
                   <Icon className="w-3.5 h-3.5" strokeWidth={2} />
                   {item.label}
                   {isActive && (
