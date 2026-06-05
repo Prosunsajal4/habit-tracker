@@ -350,6 +350,16 @@ export default function Home() {
                 Add your first habit to start tracking your progress and
                 building streaks!
               </p>
+              <button
+                onClick={() => {
+                  setEditingHabit(null);
+                  setShowModal(true);
+                }}
+                className="mt-4 inline-flex items-center gap-1.5 bg-violet-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-violet-700 transition-all duration-200 shadow-sm text-xs"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Add your first habit
+              </button>
             </div>
           ) : (
             <HabitGrid
