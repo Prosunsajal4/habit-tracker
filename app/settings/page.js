@@ -226,29 +226,42 @@ export default function Settings() {
               </div>
             ) : (
               <div className="space-y-4">
-                {habits.map((habit) => (
-                  <div
-                    key={habit.id}
-                    className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-200 hover:scale-[1.01] hover:shadow-sm dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
-                  >
-                    <div className="min-w-0">
-                      <p className="font-bold text-slate-800 dark:text-slate-200 text-base truncate">
-                        {habit.name}
-                      </p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">
-                        Goal: {habit.goalDays} days/month
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => handleDeleteHabit(habit.id)}
-                      className="p-3 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300"
-                      title="Delete habit"
-                      aria-label={`Delete ${habit.name}`}
+                {habits.map((habit) => {
+                  const totalCheckins = Object.values(completions).reduce(
+                    (s, arr) =>
+                      s + (arr?.includes(habit.id) ? 1 : 0),
+                    0,
+                  );
+                  return (
+                    <div
+                      key={habit.id}
+                      className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-200 hover:scale-[1.01] hover:shadow-sm dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
                     >
-                      <Trash2 className="w-5 h-5" strokeWidth={2} />
-                    </button>
-                  </div>
-                ))}
+                      <div className="min-w-0 flex-1">
+                        <p className="font-bold text-slate-800 dark:text-slate-200 text-base truncate">
+                          {habit.name}
+                        </p>
+                        <div className="flex items-center gap-2 mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+                          <span>Goal: {habit.goalDays} d/mo</span>
+                          <span className="text-slate-300 dark:text-slate-600">
+                            •
+                          </span>
+                          <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                            {totalCheckins} check-ins
+                          </span>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => handleDeleteHabit(habit.id)}
+                        className="p-3 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300"
+                        title="Delete habit"
+                        aria-label={`Delete ${habit.name}`}
+                      >
+                        <Trash2 className="w-5 h-5" strokeWidth={2} />
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
