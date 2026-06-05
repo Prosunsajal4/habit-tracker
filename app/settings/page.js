@@ -153,7 +153,7 @@ export default function Settings() {
           <InfoTile
             label="Storage"
             value="Local"
-            sub="Browser only"
+            sub={`${(JSON.stringify({ habits, completions }).length / 1024).toFixed(1)} KB`}
             accent="from-sky-500 to-blue-500"
           />
         </div>
