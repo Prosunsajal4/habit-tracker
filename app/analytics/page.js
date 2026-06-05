@@ -282,34 +282,49 @@ export default function Analytics() {
             <span className="w-2 h-6 bg-gradient-to-b from-pink-600 to-rose-600 rounded-full" />
             Individual Habit Performance
           </h2>
-          <div className="space-y-4">
-            {habitStats.map((habit, index) => (
-              <div
-                key={habit.id}
-                className="p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-300 dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
-              >
-                <div className="flex justify-between items-center mb-3">
-                  <p className="font-bold text-slate-800 dark:text-slate-200 text-base">
-                    {habit.name}
-                  </p>
-                  <p className="text-base font-semibold text-pink-600 dark:text-pink-400">
-                    {((habit.completed / habit.goalDays) * 100).toFixed(1)}%
+          {habitStats.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Performance stats will appear here once you add habits.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {habitStats.map((habit, index) => (
+                <div
+                  key={habit.id}
+                  className="p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-300 dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
+                >
+                  <div className="flex justify-between items-center mb-3">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span
+                        className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                      />
+                      <p className="font-bold text-slate-800 dark:text-slate-200 text-base truncate">
+                        {habit.name}
+                      </p>
+                    </div>
+                    <p className="text-base font-semibold text-pink-600 dark:text-pink-400">
+                      {((habit.completed / habit.goalDays) * 100).toFixed(1)}%
+                    </p>
+                  </div>
+                  <div className="w-full bg-slate-200 rounded-full h-3 dark:bg-slate-600 overflow-hidden">
+                    <div
+                      className="h-3 rounded-full transition-all duration-700"
+                      style={{
+                        width: `${Math.min(100, (habit.completed / habit.goalDays) * 100)}%`,
+                        backgroundColor: COLORS[index % COLORS.length],
+                      }}
+                    />
+                  </div>
+                  <p className="text-sm text-slate-500 mt-3 dark:text-slate-400">
+                    {habit.completed} of {habit.goalDays} days completed
                   </p>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3 dark:bg-slate-600 overflow-hidden">
-                  <div
-                    className="bg-gradient-to-r from-pink-500 to-rose-500 h-3 rounded-full transition-all duration-700"
-                    style={{
-                      width: `${Math.min(100, (habit.completed / habit.goalDays) * 100)}%`,
-                    }}
-                  />
-                </div>
-                <p className="text-sm text-slate-500 mt-3 dark:text-slate-400">
-                  {habit.completed} of {habit.goalDays} days completed
-                </p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </main>
     </div>
