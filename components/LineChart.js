@@ -39,18 +39,22 @@ export default function LineChartComponent({
         <XAxis
           dataKey="name"
           stroke="#6b7280"
-          fontSize={11}
+          fontSize={10}
           tickLine={false}
           axisLine={false}
+          interval="preserveStartEnd"
+          minTickGap={16}
           className="dark:[&_text]:fill-slate-400"
         />
         <YAxis
           stroke="#6b7280"
-          fontSize={11}
+          fontSize={10}
           tickLine={false}
           axisLine={false}
           domain={[0, 100]}
+          ticks={[0, 25, 50, 75, 100]}
           tickFormatter={(v) => `${v}%`}
+          width={42}
           className="dark:[&_text]:fill-slate-400"
         />
         <Tooltip
