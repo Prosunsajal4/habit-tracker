@@ -40,8 +40,8 @@ export default function DonutChart({ percentage, color, size = 120 }) {
         </PieChart>
       </ResponsiveContainer>
       <span
-        className="absolute font-bold text-slate-700 dark:text-slate-200 pointer-events-none"
-        style={{ fontSize: size * 0.18 }}
+        className="absolute font-bold text-slate-700 dark:text-slate-200 pointer-events-none tracking-tight"
+        style={{ fontSize: size * 0.18, textShadow: "0 1px 2px rgba(0,0,0,0.08)" }}
       >
         {Math.round(safePercentage)}%
       </span>
