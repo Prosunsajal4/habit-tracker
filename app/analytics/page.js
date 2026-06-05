@@ -182,8 +182,18 @@ export default function Analytics() {
             </h2>
             {habitStats.length === 0 ? (
               <div className="text-center py-16">
-                <p className="text-base text-slate-500 dark:text-slate-400">
-                  No habit data available for {selectedYear}
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 mb-3 shadow-sm">
+                  <Target
+                    className="w-5 h-5 text-purple-600 dark:text-purple-400"
+                    strokeWidth={2.5}
+                  />
+                </div>
+                <p className="text-sm font-semibold text-slate-700 mb-1 dark:text-slate-300">
+                  No data for {selectedYear}
+                </p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+                  Create habits and start checking them off to see analytics
+                  here.
                 </p>
               </div>
             ) : (
