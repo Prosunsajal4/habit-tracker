@@ -188,6 +188,13 @@ export default function Home() {
               <p className="text-slate-500 dark:text-slate-400 mt-0.5 text-xs">
                 Transform your daily habits into lasting achievements
               </p>
+              <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 font-medium">
+                {new Date(selectedMonth.year, selectedMonth.month, 1).toLocaleDateString("en-US", {
+                  month: "long",
+                  year: "numeric",
+                })}{" "}
+                · {habits.length} {habits.length === 1 ? "habit" : "habits"} tracked
+              </p>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-2 border border-slate-200 dark:border-slate-700">
