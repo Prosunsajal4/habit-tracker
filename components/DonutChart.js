@@ -28,7 +28,7 @@ export default function DonutChart({ percentage, color, size = 120 }) {
             endAngle={-270}
             dataKey="value"
             isAnimationActive={true}
-            animationDuration={600}
+            animationDuration={800}
             animationEasing="ease-out"
           >
             <Cell fill={color} className="transition-all duration-300" />
