@@ -225,17 +225,18 @@ export default function Settings() {
             </h2>
             {habits.length === 0 ? (
               <div className="text-center py-12">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40 mb-3 shadow-sm">
+                <div className="relative inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40 mb-3 shadow-sm">
                   <Trash2
                     className="w-5 h-5 text-amber-600 dark:text-amber-400"
                     strokeWidth={2.5}
                   />
+                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-amber-400/10 to-orange-400/10 blur-sm -z-10" />
                 </div>
                 <p className="text-sm font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   No habits to manage
                 </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Create habits from the dashboard to manage them here.
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-[200px] mx-auto">
+                  Add habits from the dashboard to edit or delete them here.
                 </p>
               </div>
             ) : (
