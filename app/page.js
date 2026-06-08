@@ -182,10 +182,6 @@ export default function Home() {
   const monthlyChartData = [{ name: "Month", value: monthlyCompletion }];
 
   const weekColors = ["#fef08a", "#fbcfe8", "#bfdbfe", "#bbf7d0", "#c7d2fe"];
-  const today = new Date();
-  const isCurrentMonth =
-    today.getFullYear() === selectedMonth.year &&
-    today.getMonth() === selectedMonth.month;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
