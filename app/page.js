@@ -343,34 +343,43 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200">
-            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-50/0 to-violet-100/20 dark:from-violet-900/0 dark:to-violet-900/5 pointer-events-none" />
+            <h3 className="relative text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
               <span className="w-1 h-3 bg-violet-500 rounded-full" />
               Habit Completed Per Day %
             </h3>
-            <LineChartComponent data={dailyData} color="#7c3aed" height={120} />
+            <div className="relative">
+              <LineChartComponent data={dailyData} color="#7c3aed" height={120} />
+            </div>
           </div>
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200">
-            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-emerald-100/20 dark:from-emerald-900/0 dark:to-emerald-900/5 pointer-events-none" />
+            <h3 className="relative text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
               <span className="w-1 h-3 bg-emerald-500 rounded-full" />
               Habit Completed Per Week %
             </h3>
-            <LineChartComponent
-              data={weeklyChartData}
-              color="#059669"
-              height={120}
-            />
+            <div className="relative">
+              <LineChartComponent
+                data={weeklyChartData}
+                color="#059669"
+                height={120}
+              />
+            </div>
           </div>
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200">
-            <h3 className="text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-4 hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-amber-100/20 dark:from-amber-900/0 dark:to-amber-900/5 pointer-events-none" />
+            <h3 className="relative text-xs font-bold text-slate-900 mb-3 dark:text-white flex items-center gap-2">
               <span className="w-1 h-3 bg-amber-500 rounded-full" />
               Habit Completed Per Month %
             </h3>
-            <LineChartComponent
-              data={monthlyChartData}
-              color="#d97706"
-              height={120}
-            />
+            <div className="relative">
+              <LineChartComponent
+                data={monthlyChartData}
+                color="#d97706"
+                height={120}
+              />
+            </div>
           </div>
         </div>
 
