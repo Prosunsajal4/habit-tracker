@@ -267,11 +267,14 @@ export default function Analytics() {
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "rgba(255,255,255,0.95)",
+                    backdropFilter: "blur(8px)",
                     border: "1px solid #e2e8f0",
                     borderRadius: "12px",
-                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                    fontSize: "12px",
                   }}
+                  formatter={(value, name) => [`${value} check-ins`, name]}
                 />
               </PieChart>
             </ResponsiveContainer>
