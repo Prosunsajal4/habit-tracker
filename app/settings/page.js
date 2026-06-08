@@ -250,7 +250,7 @@ export default function Settings() {
                   return (
                     <div
                       key={habit.id}
-                      className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-200 hover:scale-[1.01] hover:shadow-sm dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600"
+                      className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-200 hover:scale-[1.01] hover:shadow-sm dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600 border-l-4 border-l-violet-400 dark:border-l-violet-500"
                     >
                       <div className="min-w-0 flex-1">
                         <p className="font-bold text-slate-800 dark:text-slate-200 text-base truncate">
