@@ -263,6 +263,12 @@ export default function Settings() {
                           <span className="font-semibold text-emerald-600 dark:text-emerald-400">
                             {totalCheckins} check-ins
                           </span>
+                          <span className="text-slate-300 dark:text-slate-600">
+                            •
+                          </span>
+                          <span className="text-slate-400 dark:text-slate-500">
+                            Added {new Date(habit.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                          </span>
                         </div>
                       </div>
                       <button
