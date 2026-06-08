@@ -79,7 +79,7 @@ export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
               required
               autoFocus
               maxLength={MAX_NAME}
-              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500/30 focus:border-violet-500 outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 hover:border-slate-300 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:hover:border-slate-500 text-sm shadow-sm focus:shadow-md"
+              className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-violet-500/30 focus:border-violet-500 focus:shadow-[0_0_0_3px_rgba(124,58,237,0.15)] outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 hover:border-slate-300 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:hover:border-slate-500 dark:focus:shadow-[0_0_0_3px_rgba(124,58,237,0.2)] text-sm shadow-sm"
               placeholder="e.g., Exercise for 30 minutes"
             />
           </div>
