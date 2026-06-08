@@ -28,6 +28,7 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  title={item.label}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all duration-200 relative text-xs ${
                     isActive
                       ? "bg-white text-violet-700 shadow-sm dark:bg-slate-900 dark:text-violet-300"
