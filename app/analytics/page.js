@@ -377,3 +377,20 @@ function SummaryTile({ icon: Icon, label, value, sub, accent }) {
     </div>
   );
 }
+        <div className="min-w-0">
+          <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-400 truncate">
+            {label}
+          </p>
+          <p className="text-base font-bold text-slate-900 dark:text-white truncate">
+            {value}
+          </p>
+          {sub && (
+            <p className="text-[10px] text-slate-500 dark:text-slate-400">
+              {sub}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
