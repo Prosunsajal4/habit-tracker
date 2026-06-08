@@ -317,7 +317,7 @@ export default function Home() {
               >
                 <div
                   style={{ backgroundColor: weekColors[index] }}
-                  className="p-2 rounded-lg mb-1.5 shadow-sm"
+                  className="p-2 rounded-lg mb-1.5 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <DonutChart
                     percentage={wp.percentage}
