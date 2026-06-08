@@ -33,8 +33,8 @@ export default function LineChartComponent({
         </defs>
         <CartesianGrid
           strokeDasharray="3 3"
-          stroke="#e5e7eb"
-          className="dark:opacity-20"
+          stroke="#f1f5f9"
+          className="dark:opacity-30"
         />
         <XAxis
           dataKey="name"
