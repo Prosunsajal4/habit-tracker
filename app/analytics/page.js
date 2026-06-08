@@ -249,12 +249,12 @@ export default function Analytics() {
                 <Pie
                   data={pieData}
                   cx="50%"
-                  cy="50%"
+                  cy="45%"
                   labelLine={false}
                   label={({ name, percent }) =>
                     `${name}: ${(percent * 100).toFixed(0)}%`
                   }
-                  outerRadius={90}
+                  outerRadius={85}
                   fill="#8884d8"
                   dataKey="value"
                 >
@@ -275,6 +275,17 @@ export default function Analytics() {
                 />
               </PieChart>
             </ResponsiveContainer>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-2">
+              {pieData.map((entry, index) => (
+                <div key={entry.name} className="flex items-center gap-1.5 text-[10px] text-slate-600 dark:text-slate-400">
+                  <span
+                    className="w-2 h-2 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                  />
+                  <span className="truncate max-w-[80px]">{entry.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
