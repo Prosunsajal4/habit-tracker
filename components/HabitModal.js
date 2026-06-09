@@ -52,7 +52,7 @@ export default function HabitModal({ isOpen, onClose, onSave, habit = null }) {
           </h2>
           <button
             onClick={onClose}
-            className="text-white/80 hover:text-white hover:bg-white/10 p-1 rounded-lg transition-all duration-300 hover:rotate-90"
+            className="text-white/80 hover:text-white hover:bg-white/20 p-1.5 rounded-lg transition-all duration-300 hover:rotate-90 focus-visible:ring-2 focus-visible:ring-white/50"
             aria-label="Close modal"
           >
             <X className="w-4 h-4" />
