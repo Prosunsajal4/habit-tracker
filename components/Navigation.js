@@ -31,7 +31,7 @@ export default function Navigation() {
                   title={item.label}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-all duration-200 relative text-xs ${
                     isActive
-                      ? "bg-white text-violet-700 shadow-sm dark:bg-slate-900 dark:text-violet-300"
+                      ? "bg-white text-violet-700 shadow-sm dark:bg-slate-900 dark:text-violet-300 scale-[1.02]"
                       : "text-slate-600 hover:text-slate-900 hover:bg-white/60 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-900/40"
                   }`}
                 >
