@@ -252,7 +252,7 @@ export default function Analytics() {
                   cy="45%"
                   labelLine={false}
                   label={({ name, percent }) =>
-                    `${name}: ${(percent * 100).toFixed(0)}%`
+                    `${(percent * 100).toFixed(0)}%`
                   }
                   outerRadius={85}
                   innerRadius={40}
