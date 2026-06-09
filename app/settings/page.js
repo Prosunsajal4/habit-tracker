@@ -169,6 +169,7 @@ export default function Settings() {
             value={`${(JSON.stringify({ habits, completions }).length / 1024).toFixed(1)} KB`}
             sub="Browser local storage"
             accent="from-sky-500 to-blue-500"
+            bar={Math.min(100, (JSON.stringify({ habits, completions }).length / (5 * 1024 * 1024)) * 100)}
           />
         </div>
 
@@ -307,7 +308,7 @@ export default function Settings() {
   );
 }
 
-function InfoTile({ label, value, sub, accent }) {
+function InfoTile({ label, value, sub, accent, bar }) {
   return (
     <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl shadow-sm border border-white/60 dark:bg-slate-800/90 dark:border-slate-700/60 p-4 overflow-hidden hover:shadow-md transition-all duration-200">
       <div
@@ -323,6 +324,14 @@ function InfoTile({ label, value, sub, accent }) {
         <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
           {sub}
         </p>
+      )}
+      {typeof bar === "number" && (
+        <div className="mt-2 h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+          <div
+            className={`h-full rounded-full bg-gradient-to-r ${accent} transition-all duration-500`}
+            style={{ width: `${Math.min(100, bar)}%` }}
+          />
+        </div>
       )}
     </div>
   );
