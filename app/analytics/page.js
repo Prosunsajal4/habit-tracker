@@ -326,15 +326,15 @@ export default function Analytics() {
                       {((habit.completed / habit.goalDays) * 100).toFixed(1)}%
                     </p>
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-3 dark:bg-slate-600 overflow-hidden">
-                    <div
-                      className="h-3 rounded-full transition-all duration-700"
-                      style={{
-                        width: `${Math.min(100, (habit.completed / habit.goalDays) * 100)}%`,
-                        backgroundColor: COLORS[index % COLORS.length],
-                      }}
-                    />
-                  </div>
+                <div className="w-full bg-slate-200 rounded-full h-3 dark:bg-slate-600 overflow-hidden">
+                  <div
+                    className="h-3 rounded-full transition-all duration-700 bg-gradient-to-r"
+                    style={{
+                      width: `${Math.min(100, (habit.completed / habit.goalDays) * 100)}%`,
+                      backgroundImage: `linear-gradient(to right, ${COLORS[index % COLORS.length]}, ${COLORS[(index + 1) % COLORS.length]})`,
+                    }}
+                  />
+                </div>
                   <p className="text-sm text-slate-500 mt-3 dark:text-slate-400">
                     {habit.completed} of {habit.goalDays} days completed
                   </p>
