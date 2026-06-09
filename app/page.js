@@ -451,6 +451,9 @@ export default function Home() {
             Smart Habit Tracker
           </span>
         </p>
+        <p className="mt-1 text-slate-400 dark:text-slate-500">
+          Last updated {new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+        </p>
       </footer>
     </div>
   );
