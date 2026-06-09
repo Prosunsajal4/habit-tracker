@@ -255,8 +255,10 @@ export default function Analytics() {
                     `${name}: ${(percent * 100).toFixed(0)}%`
                   }
                   outerRadius={85}
+                  innerRadius={40}
                   fill="#8884d8"
                   dataKey="value"
+                  paddingAngle={2}
                 >
                   {pieData.map((entry, index) => (
                     <Cell
