@@ -242,7 +242,7 @@ export default function Settings() {
               </div>
             ) : (
               <div className="space-y-4">
-                {habits.map((habit) => {
+                {habits.map((habit, index) => {
                   const totalCheckins = Object.values(completions).reduce(
                     (s, arr) =>
                       s + (arr?.includes(habit.id) ? 1 : 0),
@@ -253,6 +253,10 @@ export default function Settings() {
                       key={habit.id}
                       className="flex items-center justify-between p-5 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-all duration-200 hover:scale-[1.01] hover:shadow-sm dark:bg-slate-700/50 dark:hover:bg-slate-700/80 border border-slate-200 dark:border-slate-600 border-l-4 border-l-violet-400 dark:border-l-violet-500"
                     >
+                      <div className="flex items-center gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-300">
+                        {index + 1}
+                      </span>
                       <div className="min-w-0 flex-1">
                         <p className="font-bold text-slate-800 dark:text-slate-200 text-base truncate">
                           {habit.name}
@@ -273,6 +277,7 @@ export default function Settings() {
                           </span>
                         </div>
                       </div>
+                      </div>
                     <div className="flex items-center gap-1.5">
                     <button
                       className="p-3 text-slate-400 hover:text-violet-600 hover:bg-violet-50 rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 dark:hover:bg-violet-900/30 dark:text-slate-500 dark:hover:text-violet-400"
@@ -290,6 +295,7 @@ export default function Settings() {
                     >
                         <Trash2 className="w-5 h-5" strokeWidth={2} />
                       </button>
+                    </div>
                     </div>
                   );
                 })}
