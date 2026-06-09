@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Trash2, Download, Upload, RotateCcw } from "lucide-react";
+import { Trash2, Download, Upload, RotateCcw, Pencil } from "lucide-react";
 import {
   getHabits,
   setHabits,
@@ -272,6 +272,15 @@ export default function Settings() {
                           </span>
                         </div>
                       </div>
+                    <div className="flex items-center gap-1.5">
+                    <button
+                      className="p-3 text-slate-400 hover:text-violet-600 hover:bg-violet-50 rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 dark:hover:bg-violet-900/30 dark:text-slate-500 dark:hover:text-violet-400"
+                      title="Edit on dashboard"
+                      aria-label={`Edit ${habit.name}`}
+                      onClick={() => window.location.href = "/"}
+                    >
+                      <Pencil className="w-4 h-4" strokeWidth={2} />
+                    </button>
                     <button
                       onClick={() => handleDeleteHabit(habit.id)}
                       className="p-3 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-all duration-200 hover:scale-110 hover:shadow-[0_0_12px_rgba(239,68,68,0.25)] active:scale-95 dark:hover:bg-red-900/30 dark:text-red-400 dark:hover:text-red-300"
