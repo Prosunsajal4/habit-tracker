@@ -415,7 +415,7 @@ export default function Home() {
                   setEditingHabit(null);
                   setShowModal(true);
                 }}
-                className="relative mt-4 inline-flex items-center gap-1.5 bg-violet-600 text-white px-4 py-2 rounded-xl font-medium hover:bg-violet-700 transition-all duration-200 shadow-sm text-xs"
+                className="relative mt-4 inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white px-5 py-2.5 rounded-xl font-semibold hover:from-violet-700 hover:to-fuchsia-700 transition-all duration-200 shadow-md shadow-violet-500/25 hover:shadow-violet-500/40 text-xs active:scale-[0.98]"
               >
                 <Plus className="w-3.5 h-3.5" />
                 Add your first habit
