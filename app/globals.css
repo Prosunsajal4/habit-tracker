@@ -92,9 +92,11 @@ input:focus:not(:focus-visible) {
 ::selection {
   background-color: #c4b5fd;
   color: #1e1b4b;
+  transition: background-color 150ms ease;
 }
 
 .dark ::selection {
   background-color: #5b21b6;
   color: #f5f3ff;
+  transition: background-color 150ms ease;
 }
