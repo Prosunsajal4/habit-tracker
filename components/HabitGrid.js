@@ -166,7 +166,7 @@ export default function HabitGrid({
                       className={`w-5 h-5 flex items-center justify-center mx-auto rounded-md transition-all duration-200 hover:scale-125 active:scale-95 focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-1 dark:focus-visible:ring-offset-slate-900 ${
                         completed
                           ? "bg-emerald-100 dark:bg-emerald-900/40 shadow-inner"
-                          : "hover:bg-slate-200/60 dark:hover:bg-slate-600/40"
+                          : "hover:bg-slate-200/80 dark:hover:bg-slate-600/50 hover:shadow-sm"
                       }`}
                     >
                       {completed ? (
