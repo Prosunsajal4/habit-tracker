@@ -34,7 +34,7 @@ export default function DonutChart({ percentage, color, size = 120 }) {
             <Cell fill={color} className="transition-all duration-300" />
             <Cell
               fill="#e5e7eb"
-              className="dark:fill-slate-700 transition-all duration-300"
+              className="dark:fill-slate-800 transition-all duration-300"
             />
           </Pie>
         </PieChart>
