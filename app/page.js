@@ -259,7 +259,7 @@ export default function Home() {
                   Keep going
                 </p>
               </div>
-              <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900/30 dark:to-emerald-800/20 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300 shadow-sm">
                 <TrendingUp
                   className="w-5 h-5 text-emerald-600 dark:text-emerald-400"
                   strokeWidth={2}
@@ -287,7 +287,7 @@ export default function Home() {
                     : "—"}
                 </p>
               </div>
-              <div className="bg-rose-100 dark:bg-rose-900/30 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-gradient-to-br from-rose-100 to-rose-200 dark:from-rose-900/30 dark:to-rose-800/20 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300 shadow-sm">
                 <TrendingDown
                   className="w-5 h-5 text-rose-600 dark:text-rose-400"
                   strokeWidth={2}
