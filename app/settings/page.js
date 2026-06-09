@@ -303,6 +303,9 @@ export default function Settings() {
         <p className="text-center text-[11px] text-slate-400 dark:text-slate-500">
           Your data lives in your browser. Export regularly to keep a backup.
         </p>
+        <p className="text-center text-[10px] text-slate-300 dark:text-slate-600 mt-1">
+          {habits.length} habits · {Object.values(completions).reduce((s, a) => s + (a?.length || 0), 0)} total check-ins
+        </p>
       </footer>
     </div>
   );
