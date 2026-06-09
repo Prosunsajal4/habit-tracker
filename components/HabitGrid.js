@@ -98,9 +98,9 @@ export default function HabitGrid({
               return (
                 <th
                   key={i}
-                  className={`border border-slate-200 px-0.5 py-1 text-center font-semibold text-[9px] ${
+              className={`border border-slate-200 px-0.5 py-1 text-center font-semibold text-[9px] ${
                     isToday
-                      ? "bg-violet-200 text-violet-800 dark:bg-violet-700/60 dark:text-violet-100"
+                      ? "bg-violet-200 text-violet-800 dark:bg-violet-700/60 dark:text-violet-100 border-b-2 border-b-violet-500 dark:border-b-violet-400"
                       : `${weekColors[weekIndex]} text-slate-600 dark:text-slate-400`
                   } dark:border-slate-600`}
                 >
