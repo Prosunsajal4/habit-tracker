@@ -53,8 +53,14 @@ export default function LineChartComponent({
           axisLine={false}
           domain={[0, 100]}
           ticks={[0, 25, 50, 75, 100]}
-          tickFormatter={(v) => `${v}%`}
-          width={42}
+          tickFormatter={(v) => `${v}`}
+          width={30}
+          label={{
+            value: "%",
+            position: "insideTopLeft",
+            offset: -4,
+            style: { fontSize: 10, fill: "#9ca3af" },
+          }}
           className="dark:[&_text]:fill-slate-400"
         />
         <Tooltip
