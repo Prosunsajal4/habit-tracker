@@ -82,9 +82,11 @@ export default function LineChartComponent({
           dataKey="value"
           stroke={color}
           strokeWidth={2.5}
-          dot={{ fill: color, r: 3.5, strokeWidth: 0 }}
+          dot={{ fill: color, r: 3.5, strokeWidth: 0, className: "dark:fill-slate-300" }}
           activeDot={{ r: 6, strokeWidth: 2, stroke: "#fff" }}
           animationDuration={600}
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </ComposedChart>
     </ResponsiveContainer>
